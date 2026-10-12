@@ -1,0 +1,101 @@
+{
+  "kpis": {
+    "sessions": 12330,
+    "conversion_rate": 0.1547,
+    "conversion_ci95": [
+      0.1485,
+      0.1612
+    ],
+    "single_page_sessions_pct": 0.0489,
+    "avg_bounce_rate": 0.0222,
+    "avg_exit_rate": 0.0431,
+    "median_pages_per_session": 20.0,
+    "median_session_minutes": 11.3,
+    "returning_visitor_share": 0.8557
+  },
+  "month_conv_rate": {
+    "Feb": 0.0163,
+    "Mar": 0.1007,
+    "May": 0.1085,
+    "Jun": 0.1007,
+    "Jul": 0.1528,
+    "Aug": 0.1755,
+    "Sep": 0.192,
+    "Oct": 0.2095,
+    "Nov": 0.2535,
+    "Dec": 0.1251
+  },
+  "best_month": "Nov",
+  "nov_share_of_conversions": 0.398,
+  "new_vs_returning": {
+    "new_rate": 0.2491,
+    "returning_rate": 0.1393,
+    "z": 11.61,
+    "p": 3.8726217006968784e-31
+  },
+  "weekend_vs_weekday": {
+    "weekend_rate": 0.174,
+    "weekday_rate": 0.1489,
+    "z": 3.25,
+    "p": 0.0011420423637110938
+  },
+  "traffic_type_chi2": {
+    "chi2": 335.3,
+    "dof": 7,
+    "p": 1.74062688149658e-68
+  },
+  "conv_by_product_pages": {
+    "0": 0.1579,
+    "1-5": 0.0412,
+    "6-15": 0.1202,
+    "16-30": 0.1855,
+    "31-60": 0.2037,
+    "60+": 0.2624
+  },
+  "conv_rate_with_page_value": 0.5634,
+  "conv_rate_without_page_value": 0.0385,
+  "share_sessions_with_page_value": 0.2214,
+  "logit_auc_with_pagevalues": [
+    0.905,
+    0.008
+  ],
+  "logit_auc_without_pagevalues": [
+    0.747,
+    0.013
+  ],
+  "top_drivers_odds_ratio": {
+    "Month = Feb": 0.21,
+    "ExitRates (+1 SD)": 0.23,
+    "Traffic = 13": 0.43,
+    "Month = Nov": 1.94,
+    "Traffic = 3": 0.62,
+    "Month = Mar": 0.71,
+    "Traffic = 8": 1.39,
+    "Month = Oct": 1.39,
+    "Traffic = 1": 0.77,
+    "VisitorType = New_Visitor": 1.27
+  },
+  "logit_pseudo_r2": 0.133,
+  "ab_test_sizing": [
+    {
+      "relative_lift": "5%",
+      "target_rate": 0.1625,
+      "sessions_per_arm": 34990
+    },
+    {
+      "relative_lift": "10%",
+      "target_rate": 0.1702,
+      "sessions_per_arm": 8917
+    },
+    {
+      "relative_lift": "15%",
+      "target_rate": 0.178,
+      "sessions_per_arm": 4036
+    },
+    {
+      "relative_lift": "20%",
+      "target_rate": 0.1857,
+      "sessions_per_arm": 2311
+    }
+  ]
+}

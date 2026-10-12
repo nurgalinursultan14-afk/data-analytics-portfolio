@@ -1,0 +1,4 @@
+__pycache__/
+.pytest_cache/
+*.pyc
+01-internship-market-sql/output/internships.db

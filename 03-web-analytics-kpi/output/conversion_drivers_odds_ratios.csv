@@ -1,0 +1,30 @@
+,odds_ratio,p_value
+Month = Nov,1.9404,0.0
+Traffic = 3,0.6205,0.0
+Traffic = 13,0.4305,0.0
+ExitRates (+1 SD),0.2347,0.0
+ProductRelated_Duration (+1 SD),1.1967,0.0003
+VisitorType = New_Visitor,1.2685,0.0011
+Month = Mar,0.7112,0.0015
+Traffic = 1,0.7736,0.0021
+SpecialDay (+1 SD),0.8772,0.0022
+Month = Feb,0.2115,0.0085
+Month = Oct,1.3914,0.0099
+Traffic = 8,1.3915,0.0158
+Month = Dec,0.8129,0.0503
+Administrative (+1 SD),1.0621,0.0566
+Month = Jul,1.3303,0.0644
+Month = Sep,1.2943,0.0666
+Month = Aug,1.2922,0.0816
+VisitorType = Other,1.722,0.0846
+Traffic = 6,0.7795,0.1187
+Informational (+1 SD),1.0439,0.154
+Traffic = other,1.0957,0.3712
+BounceRates (+1 SD),1.1481,0.3753
+ProductRelated (+1 SD),0.9585,0.379
+Traffic = 10,1.117,0.4059
+Administrative_Duration (+1 SD),0.9765,0.428
+Month = Jun,0.9017,0.6324
+Traffic = 4,0.956,0.6705
+Weekend,1.0067,0.9129
+Informational_Duration (+1 SD),1.0019,0.9469

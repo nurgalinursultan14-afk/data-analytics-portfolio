@@ -1,0 +1,4 @@
+VisitorType,sessions,conversions,bounce,pages,conv_rate,ci_lo,ci_hi
+New_Visitor,1694,422,0.0053,16.0,0.2491,0.2291,0.2703
+Returning_Visitor,10551,1470,0.0248,22.0,0.1393,0.1328,0.1461
+Other,85,16,0.0386,7.0,0.1882,0.1193,0.2841

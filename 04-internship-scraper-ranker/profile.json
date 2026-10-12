@@ -1,0 +1,61 @@
+{
+  "_comment": "Edit this file to rank postings for a different candidate. Weights are relative; scores are 0-100.",
+  "weights": {
+    "role_fit": 0.4,
+    "location": 0.25,
+    "recency": 0.2,
+    "apply_ease": 0.15
+  },
+  "role_keywords": {
+    "data analyst": 1.0,
+    "analytics": 1.0,
+    "business analyst": 1.0,
+    "business intelligence": 0.9,
+    "insight": 0.9,
+    "gis": 1.0,
+    "geospatial": 1.0,
+    "research": 0.7,
+    "operations": 0.7,
+    "marketing": 0.6,
+    "product analyst": 0.9,
+    "data science": 0.6,
+    "strategy": 0.5,
+    "product": 0.4,
+    "data": 0.5,
+    "analyst": 0.7,
+    "analysis": 0.8
+  },
+  "role_penalties": {
+    "engineer": 0.5,
+    "phd": 0.0,
+    "hardware": 0.2,
+    "firmware": 0.1,
+    "machine learning": 0.6,
+    "graduate": 0.2,
+    "trading": 0.3,
+    "valuation": 0.5
+  },
+  "location_scores": {
+    "NYC": 1.0,
+    "NY": 0.95,
+    "Remote": 0.9,
+    "NJ": 0.7,
+    "PA": 0.6,
+    "MA": 0.6,
+    "CT": 0.6
+  },
+  "other_us_location_score": 0.35,
+  "non_us_location_score": 0.0,
+  "recency_half_life_days": 7,
+  "apply_ease": {
+    "no_account": 1.0,
+    "account": 0.4
+  },
+  "exclude_flags": [
+    "no_sponsorship",
+    "citizens_only",
+    "closed",
+    "grad_only"
+  ],
+  "exclude_companies": []
+}

@@ -1,0 +1,61 @@
+category,ats,postings,pct_of_category
+Data/AI,Workday,684,51.1
+Data/AI,Company site / other,291,21.7
+Data/AI,Oracle,120,9.0
+Data/AI,Greenhouse,76,5.7
+Data/AI,iCIMS,56,4.2
+Data/AI,SuccessFactors,29,2.2
+Data/AI,Ashby,26,1.9
+Data/AI,SmartRecruiters,21,1.6
+Data/AI,Eightfold,8,0.6
+Data/AI,Workable,8,0.6
+Data/AI,Lever,6,0.4
+Data/AI,Rippling,5,0.4
+Data/AI,Jobvite,4,0.3
+Data/AI,Taleo,4,0.3
+Hardware,Workday,293,49.5
+Hardware,Company site / other,111,18.8
+Hardware,Greenhouse,45,7.6
+Hardware,Oracle,29,4.9
+Hardware,Ashby,28,4.7
+Hardware,Eightfold,21,3.5
+Hardware,SmartRecruiters,21,3.5
+Hardware,Lever,18,3.0
+Hardware,iCIMS,15,2.5
+Hardware,SuccessFactors,4,0.7
+Hardware,Rippling,3,0.5
+Hardware,Taleo,3,0.5
+Hardware,Workable,1,0.2
+Product,Workday,106,41.6
+Product,Company site / other,57,22.4
+Product,Oracle,52,20.4
+Product,Greenhouse,14,5.5
+Product,iCIMS,11,4.3
+Product,Ashby,6,2.4
+Product,SuccessFactors,5,2.0
+Product,SmartRecruiters,4,1.6
+Quant,Workday,117,38.4
+Quant,Company site / other,70,23.0
+Quant,Greenhouse,61,20.0
+Quant,iCIMS,25,8.2
+Quant,Oracle,14,4.6
+Quant,SmartRecruiters,10,3.3
+Quant,Ashby,3,1.0
+Quant,Taleo,2,0.7
+Quant,Lever,1,0.3
+Quant,SuccessFactors,1,0.3
+Quant,Workable,1,0.3
+Software,Workday,601,46.8
+Software,Company site / other,266,20.7
+Software,Greenhouse,135,10.5
+Software,Oracle,76,5.9
+Software,Ashby,62,4.8
+Software,iCIMS,55,4.3
+Software,SmartRecruiters,21,1.6
+Software,Lever,17,1.3
+Software,SuccessFactors,17,1.3
+Software,Eightfold,10,0.8
+Software,Jobvite,7,0.5
+Software,Rippling,7,0.5
+Software,Taleo,6,0.5
+Software,Workable,5,0.4

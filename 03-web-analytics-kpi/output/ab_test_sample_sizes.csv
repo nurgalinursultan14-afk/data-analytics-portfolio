@@ -1,0 +1,5 @@
+relative_lift,target_rate,sessions_per_arm
+5%,0.1625,34990
+10%,0.1702,8917
+15%,0.178,4036
+20%,0.1857,2311

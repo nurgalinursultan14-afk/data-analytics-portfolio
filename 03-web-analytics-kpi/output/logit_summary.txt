@@ -1,0 +1,43 @@
+                           Logit Regression Results                           
+==============================================================================
+Dep. Variable:              converted   No. Observations:                12330
+Model:                          Logit   Df Residuals:                    12300
+Method:                           MLE   Df Model:                           29
+Date:                Mon, 12 Oct 2026   Pseudo R-squ.:                  0.1333
+Time:                        06:27:31   Log-Likelihood:                -4604.1
+converged:                       True   LL-Null:                       -5312.4
+Covariance Type:            nonrobust   LLR p-value:                3.392e-280
+=================================================================================================================================
+                                                                    coef    std err          z      P>|z|      [0.025      0.975]
+---------------------------------------------------------------------------------------------------------------------------------
+Intercept                                                        -2.2366      0.090    -24.743      0.000      -2.414      -2.059
+C(Month, Treatment('May'))[T.Aug]                                 0.2563      0.147      1.741      0.082      -0.032       0.545
+C(Month, Treatment('May'))[T.Dec]                                -0.2071      0.106     -1.957      0.050      -0.414       0.000
+C(Month, Treatment('May'))[T.Feb]                                -1.5533      0.591     -2.630      0.009      -2.711      -0.396
+C(Month, Treatment('May'))[T.Jul]                                 0.2854      0.154      1.849      0.064      -0.017       0.588
+C(Month, Treatment('May'))[T.Jun]                                -0.1035      0.216     -0.478      0.632      -0.527       0.320
+C(Month, Treatment('May'))[T.Mar]                                -0.3409      0.107     -3.181      0.001      -0.551      -0.131
+C(Month, Treatment('May'))[T.Nov]                                 0.6629      0.085      7.811      0.000       0.497       0.829
+C(Month, Treatment('May'))[T.Oct]                                 0.3303      0.128      2.578      0.010       0.079       0.581
+C(Month, Treatment('May'))[T.Sep]                                 0.2580      0.141      1.834      0.067      -0.018       0.534
+C(VisitorType, Treatment('Returning_Visitor'))[T.New_Visitor]     0.2379      0.073      3.268      0.001       0.095       0.381
+C(VisitorType, Treatment('Returning_Visitor'))[T.Other]           0.5435      0.315      1.724      0.085      -0.074       1.161
+C(Traffic, Treatment('2'))[T.1]                                  -0.2567      0.083     -3.081      0.002      -0.420      -0.093
+C(Traffic, Treatment('2'))[T.10]                                  0.1107      0.133      0.831      0.406      -0.150       0.372
+C(Traffic, Treatment('2'))[T.13]                                 -0.8427      0.171     -4.916      0.000      -1.179      -0.507
+C(Traffic, Treatment('2'))[T.3]                                  -0.4773      0.093     -5.111      0.000      -0.660      -0.294
+C(Traffic, Treatment('2'))[T.4]                                  -0.0450      0.106     -0.426      0.670      -0.252       0.162
+C(Traffic, Treatment('2'))[T.6]                                  -0.2491      0.160     -1.560      0.119      -0.562       0.064
+C(Traffic, Treatment('2'))[T.8]                                   0.3304      0.137      2.413      0.016       0.062       0.599
+C(Traffic, Treatment('2'))[T.other]                               0.0914      0.102      0.894      0.371      -0.109       0.292
+Administrative_z                                                  0.0603      0.032      1.907      0.057      -0.002       0.122
+Administrative_Duration_z                                        -0.0238      0.030     -0.793      0.428      -0.083       0.035
+Informational_z                                                   0.0430      0.030      1.426      0.154      -0.016       0.102
+Informational_Duration_z                                          0.0019      0.029      0.067      0.947      -0.054       0.058
+ProductRelated_z                                                 -0.0424      0.048     -0.880      0.379      -0.137       0.052
+ProductRelated_Duration_z                                         0.1796      0.050      3.613      0.000       0.082       0.277
+BounceRates_z                                                     0.1381      0.156      0.887      0.375      -0.167       0.443
+ExitRates_z                                                      -1.4495      0.109    -13.358      0.000      -1.662      -1.237
+SpecialDay_z                                                     -0.1310      0.043     -3.063      0.002      -0.215      -0.047
+Weekend                                                           0.0067      0.061      0.109      0.913      -0.113       0.126
+=================================================================================================================================
