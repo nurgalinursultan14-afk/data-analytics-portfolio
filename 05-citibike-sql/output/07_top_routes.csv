@@ -1,0 +1,21 @@
+segment,rank,from_station,to_station,rides
+"member, weekday",1,Eastern Pkwy & Kingston Ave,(round trip),720
+"member, weekday",2,Vernon Blvd & 50 Ave,55 Ave & Center Blvd,679
+"member, weekday",3,55 Ave & Center Blvd,Vernon Blvd & 50 Ave,669
+"member, weekday",4,N 6 St & Bedford Ave,S 2 St & Kent Ave,655
+"member, weekday",5,S 4 St & Wythe Ave,N 6 St & Bedford Ave,606
+"member, weekday",6,N 6 St & Bedford Ave,S 4 St & Wythe Ave,585
+"member, weekday",7,S 2 St & Kent Ave,N 6 St & Bedford Ave,513
+"member, weekday",8,W 21 St & 6 Ave,9 Ave & W 22 St,460
+"member, weekday",9,Henry St & Grand St,Norfolk St & Broome St,452
+"member, weekday",10,Norfolk St & Broome St,Henry St & Grand St,445
+"casual, weekend/holiday",1,Central Park S & 6 Ave,(round trip),772
+"casual, weekend/holiday",2,7 Ave & Central Park South,(round trip),498
+"casual, weekend/holiday",3,Soissons Landing,(round trip),340
+"casual, weekend/holiday",4,Roosevelt Island Tramway,(round trip),318
+"casual, weekend/holiday",5,Central Park W & W 72 St,(round trip),267
+"casual, weekend/holiday",6,Central Park W & W 68 St,(round trip),224
+"casual, weekend/holiday",7,Broadway & W 58 St,(round trip),218
+"casual, weekend/holiday",8,Yankee Ferry Terminal,(round trip),178
+"casual, weekend/holiday",9,5 Ave & E 72 St,(round trip),168
+"casual, weekend/holiday",10,Central Park S & Grand Army Plaza,(round trip),166

@@ -2,3 +2,5 @@ __pycache__/
 .pytest_cache/
 *.pyc
 01-internship-market-sql/output/internships.db
+05-citibike-sql/output/citibike.db
+05-citibike-sql/data/*.zip
