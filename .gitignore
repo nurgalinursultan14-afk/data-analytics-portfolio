@@ -4,3 +4,5 @@ __pycache__/
 01-internship-market-sql/output/internships.db
 05-citibike-sql/output/citibike.db
 05-citibike-sql/data/*.zip
+06-olist-ecommerce-sql/output/olist.db
+06-olist-ecommerce-sql/data/*.csv
