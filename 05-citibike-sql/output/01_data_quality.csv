@@ -1,0 +1,10 @@
+check_name,trips
+Raw trips in the September file,4982855
+Started Aug 31 (spillover from previous month),549
+Shorter than 1 minute (Citi Bike already drops these),0
+Longer than 3 hours,4921
+No start station (e-bike parked off-dock),2917
+No end station (bike not re-docked),14576
+To or from a repair shop / depot station,893
+Coordinates missing or outside NYC,17142
+Kept in the rides view,4976551

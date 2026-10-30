@@ -1,6 +1,6 @@
 # Data Analytics Portfolio — Nursultan Nurgali
 
-Four end-to-end projects built on real public data. Each project folder has its own README covering the question, findings, methods, how to run it and its limitations.
+Five end-to-end projects built on real public data. Each project folder has its own README covering the question, findings, methods, how to run it and its limitations.
 
 | # | Project | Question | Skills |
 |---|---|---|---|
@@ -8,6 +8,7 @@ Four end-to-end projects built on real public data. Each project folder has its 
 | 02 | [NYC Heat Vulnerability GIS](02-nyc-heat-vulnerability-gis/) | Where is extreme heat most dangerous in NYC, and does greenspace cool neighborhoods? | GeoPandas, spatial joins and areal interpolation, Moran's I / LISA, spatial regression |
 | 03 | [E-commerce Web Analytics](03-web-analytics-kpi/) | What drives online purchases, and how big must an A/B test be? | KPI dashboard, confidence intervals, z / χ² tests, logistic regression, leakage check, power analysis |
 | 04 | [Internship Scraper and Fit Ranker](04-internship-scraper-ranker/) | Which new postings best fit a candidate? | Web scraping (requests, BeautifulSoup), weighted ranking, sensitivity analysis, pytest |
+| 05 | [NYC Citi Bike, in SQL](05-citibike-sql/) | How do 5 million rides break down by rider, hour, weather and station? | SQL (SQLite: star schema, SQL data cleaning, window frames, `LAG`, `RANK`), joins to NOAA weather |
 
 ## Setup
 
@@ -20,4 +21,4 @@ Then follow the "Run it" section in each project's README. Every chart and numbe
 
 ## Data sources
 
-All data is public: SimplifyJobs Summer2027-Internships (GitHub), NYC DOHMH Environment & Health Data Portal (Apache-2.0) and the UCI Online Shoppers Purchasing Intention dataset (CC BY 4.0).
+All data is public: SimplifyJobs Summer2027-Internships (GitHub), NYC DOHMH Environment & Health Data Portal (Apache-2.0), the UCI Online Shoppers Purchasing Intention dataset (CC BY 4.0), Citi Bike System Data (Citi Bike Data License) and NOAA GHCN-Daily weather.
