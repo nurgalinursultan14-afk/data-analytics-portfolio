@@ -1,0 +1,6 @@
+delivery,orders,pct_of_orders,avg_stars,pct_1_star,pct_5_star
+1) 7+ days early,75487,79.0,4.31,6.5,63.4
+2) 0-6 days early,13695,14.3,4.17,7.3,56.2
+3) 1-3 days late,1851,1.9,3.29,25.1,33.2
+4) 4-7 days late,1748,1.8,2.1,58.6,14.1
+5) 8+ days late,2779,2.9,1.7,69.8,7.0

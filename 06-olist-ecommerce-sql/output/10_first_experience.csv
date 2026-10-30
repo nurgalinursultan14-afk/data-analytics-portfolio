@@ -1,0 +1,6 @@
+factor,first_order,customers,pct_came_back
+Delivery,late,3669,1.99
+Delivery,on time,51566,2.93
+Review,1-2 stars,7197,2.24
+Review,3 stars,4787,2.51
+Review,4-5 stars,42842,3.03

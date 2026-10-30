@@ -1,0 +1,10 @@
+check_name,n
+Orders in the source,99441
+Customer IDs (one per order),99441
+Distinct people (customer_unique_id),96096
+Canceled or unavailable orders,1234
+Orders with no items,775
+Orders outside Jan 2017 to Aug 2018 (partial months),349
+Delivered orders missing a delivery date,8
+Products with no category,610
+Orders kept in the sales view,97905
