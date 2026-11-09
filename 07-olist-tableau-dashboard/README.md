@@ -14,7 +14,7 @@ An interactive dashboard for a marketplace operations manager. It answers three 
 
 - **R$15.7M GMV across 97,905 orders**, growing about 8x through 2017 and then flat in 2018.
 - **6.8% of delivered orders arrived late**, but late orders get much worse reviews: 4.3 stars when a week or more early vs. **1.7 stars** when 8+ days late.
-- **The north and northeast wait longest.** Maranhão (17.5%) and Ceará (13.8%) have the highest late rates, and São Paulo has one of the lowest.
+- **The north and northeast wait longest.** Among states with 500+ orders, Maranhão (17.5%) and Ceará (13.8%) have the highest late rates, and São Paulo has one of the lowest.
 - **Only 2.2% of customers ever order again**, so the first delivery experience matters a lot.
 
 ## Data
