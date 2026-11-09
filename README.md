@@ -4,7 +4,7 @@ I turn messy public data into clear answers for the people who make decisions: S
 
 **Contact:** [GitHub](https://github.com/nurgalinursultan14-afk) · <!-- TODO: add LinkedIn URL --> LinkedIn · <!-- TODO: add email --> Email · <!-- TODO: add resume link --> Resume
 
-**Toolkit:** SQL (CTEs, window functions, star schemas, cohort and RFM analysis) · Python (pandas, statsmodels, scikit-learn, GeoPandas) · statistics (hypothesis tests, regression, power analysis, spatial autocorrelation) · web scraping · pytest · git
+**Toolkit:** SQL (CTEs, window functions, star schemas, cohort and RFM analysis) · Python (pandas, statsmodels, scikit-learn, GeoPandas) · statistics (hypothesis tests, regression, power analysis, spatial autocorrelation) · Tableau · web scraping · pytest · git
 
 ---
 
@@ -12,6 +12,7 @@ I turn messy public data into clear answers for the people who make decisions: S
 
 | # | Project | Headline result | Skills |
 |---|---|---|---|
+| 07 | [**Olist Marketplace Dashboard, in Tableau**](07-olist-tableau-dashboard/) | One screen for sales, late deliveries by state and their effect on reviews (1.7 stars when 8+ days late vs. 4.3 when early). *Tableau Public version in progress.* | Tableau (LOD, parameters, dashboard actions), SQL extracts |
 | 06 | [**E-commerce Customer Retention, in SQL**](06-olist-ecommerce-sql/) | Only **2.2%** of 94,703 customers ever came back, and orders 8+ days late drew **1-star reviews 70%** of the time. | 7-table SQL model, cohort retention, RFM with `NTILE`, Pareto |
 | 05 | [**NYC Citi Bike, in SQL**](05-citibike-sql/) | Across 5 million rides, a storm weekend cut member rides by **62 to 72%**, and office stations gain up to **135 bikes** every weekday morning. | Star schema, SQL data cleaning, `LAG`, `RANK`, weather joins |
 | 03 | [**E-commerce Web Analytics**](03-web-analytics-kpi/) | November converts at **25.4%** vs. ~10% in spring, and a 10% lift test needs **8,917 sessions per arm**. Caught a leaking feature that inflated AUC from 0.75 to 0.91. | KPI dashboard, z / χ² tests, logistic regression, power analysis |
