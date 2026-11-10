@@ -1,5 +1,7 @@
 # Nursultan Nurgali · Data Analytics Portfolio
 
+[![CI](https://github.com/nurgalinursultan14-afk/data-analytics-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/nurgalinursultan14-afk/data-analytics-portfolio/actions/workflows/ci.yml)
+
 I turn messy public data into clear answers for the people who make decisions: SQL first, Python for statistics and maps, and a chart for every claim. I'm looking for **Summer 2027 data analyst / business analyst internships, ideally in New York.**
 
 **Contact:** [GitHub](https://github.com/nurgalinursultan14-afk) · <!-- TODO: add LinkedIn URL --> LinkedIn · <!-- TODO: add email --> Email · <!-- TODO: add resume link --> Resume
