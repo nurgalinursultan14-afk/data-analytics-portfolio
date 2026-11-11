@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  tests:
+    name: Unit tests (project 04)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pandas scipy requests beautifulsoup4 lxml pytest
+      - run: python -m pytest -q 04-internship-scraper-ranker/tests
+
+  dbt:
+    name: dbt build + data tests (project 08)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install dbt-duckdb
+      - name: Download the Olist CSVs
+        run: python 06-olist-ecommerce-sql/build_db.py
+      - name: Build models and run all data tests
+        working-directory: 08-olist-dbt
+        run: dbt build --profiles-dir .

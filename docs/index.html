@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nursultan Nurgali · Data Analyst</title>
+<meta name="description" content="Data analytics portfolio: SQL, Python, dbt and dashboards on real public data.">
+<style>
+:root { --bg:#f7f8fa; --card:#fff; --ink:#14171f; --muted:#5d6475; --line:#e4e7ec; --accent:#2a6fdb; --soft:#e8effc; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#0f1218; --card:#171b23; --ink:#e9ecf2; --muted:#9aa3b5; --line:#262c38; --accent:#6c9cf0; --soft:#1e2a44; } }
+:root[data-theme="dark"] { --bg:#0f1218; --card:#171b23; --ink:#e9ecf2; --muted:#9aa3b5; --line:#262c38; --accent:#6c9cf0; --soft:#1e2a44; }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+a { color: var(--accent); }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 48px 16px 64px; }
+.hero h1 { font-size: clamp(28px, 5vw, 40px); line-height: 1.15; margin: 0 0 12px; letter-spacing: -0.02em; }
+.hero p { font-size: 18px; color: var(--muted); max-width: 680px; margin: 0 0 18px; }
+.links { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn { display: inline-block; padding: 9px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--ink); text-decoration: none; font-size: 14px; font-weight: 600; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 28px 0 40px; }
+.tag { font-size: 13px; padding: 4px 10px; border-radius: 999px; background: var(--soft); }
+h2 { font-size: 20px; margin: 0 0 16px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 16px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; text-decoration: none; color: inherit; transition: border-color .15s; }
+.card:hover { border-color: var(--accent); }
+.card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; object-position: top; background: #fff; border-bottom: 1px solid var(--line); }
+.card .body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.num { font-size: 12px; color: var(--muted); font-weight: 600; letter-spacing: .04em; }
+.card h3 { font-size: 16px; margin: 0; }
+.card p { margin: 0; font-size: 14px; color: var(--muted); }
+.card .stack { margin-top: auto; padding-top: 8px; font-size: 12px; color: var(--muted); }
+.noimg { aspect-ratio: 16/9; display: grid; place-items: center; background: var(--soft); font-size: 40px; border-bottom: 1px solid var(--line); }
+footer { margin-top: 48px; font-size: 13px; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <h1>Nursultan Nurgali<br>Data Analyst</h1>
+    <p>I turn messy public data into clear answers for the people who make decisions. SQL first, Python for statistics and maps, dbt for pipelines, and a chart for every claim. Looking for Summer 2027 data analyst internships in New York.</p>
+    <div class="links">
+      <a class="btn primary" href="olist-dashboard.html">Open the live dashboard</a>
+      <a class="btn" href="https://github.com/nurgalinursultan14-afk/data-analytics-portfolio">Code on GitHub</a>
+      <!-- TODO: replace with real links -->
+      <a class="btn" href="https://www.linkedin.com/in/YOUR-HANDLE">LinkedIn</a>
+      <a class="btn" href="YOUR-RESUME-LINK">Resume</a>
+    </div>
+  </section>
+
+  <div class="tags">
+    <span class="tag">SQL (CTEs, window functions, cohorts)</span><span class="tag">Python · pandas</span><span class="tag">dbt · DuckDB</span>
+    <span class="tag">Statistics · A/B test sizing</span><span class="tag">GeoPandas · spatial regression</span><span class="tag">Dashboards</span><span class="tag">Web scraping · pytest</span>
+  </div>
+
+  <h2>Projects</h2>
+  <div class="grid">
+    <a class="card" href="olist-dashboard.html">
+      <img src="img/07.jpg" alt="Olist marketplace dashboard" loading="lazy">
+      <div class="body"><span class="num">07 · LIVE DASHBOARD</span><h3>Olist marketplace dashboard</h3>
+      <p>Filter 97,905 orders by month, category and state. Orders 8+ days late average 1.7 stars, against 4.3 for orders that arrive early.</p><span class="stack">Interactive web dashboard · SQL extracts</span></div></a>
+    <a class="card" href="https://github.com/nurgalinursultan14-afk/data-analytics-portfolio/tree/main/08-olist-dbt">
+      <div class="noimg" aria-hidden="true">🧱</div>
+      <div class="body"><span class="num">08</span><h3>Olist marketplace, in dbt</h3>
+      <p>Project 06 rebuilt as a production-style pipeline: 12 models and 46 automated data tests, run in CI on every push.</p><span class="stack">dbt · DuckDB · BigQuery-ready · GitHub Actions</span></div></a>
+    <a class="card" href="https://github.com/nurgalinursultan14-afk/data-analytics-portfolio/tree/main/06-olist-ecommerce-sql">
+      <img src="img/06.jpg" alt="Review scores by delivery lateness" loading="lazy">
+      <div class="body"><span class="num">06</span><h3>E-commerce customer retention, in SQL</h3>
+      <p>Only 2.2% of 94,703 customers ever came back. Late delivery is the main driver of 1-star reviews.</p><span class="stack">SQL · cohort retention · RFM · Pareto</span></div></a>
+    <a class="card" href="https://github.com/nurgalinursultan14-afk/data-analytics-portfolio/tree/main/05-citibike-sql">
+      <img src="img/05.jpg" alt="Citi Bike rides by hour" loading="lazy">
+      <div class="body"><span class="num">05</span><h3>NYC Citi Bike, in SQL</h3>
+      <p>5 million rides joined to weather data. A storm weekend cut member rides by 62 to 72%, and office stations gain up to 135 bikes every morning.</p><span class="stack">SQL · star schema · LAG / RANK</span></div></a>
+    <a class="card" href="https://github.com/nurgalinursultan14-afk/data-analytics-portfolio/tree/main/03-web-analytics-kpi">
+      <img src="img/03.jpg" alt="Web analytics KPI dashboard" loading="lazy">
+      <div class="body"><span class="num">03</span><h3>E-commerce web analytics</h3>
+      <p>November converts at 25.4%. A 10% lift test needs 8,917 sessions per arm. Caught a leaking feature that inflated AUC from 0.75 to 0.91.</p><span class="stack">Hypothesis tests · logistic regression · power analysis</span></div></a>
+    <a class="card" href="https://github.com/nurgalinursultan14-afk/data-analytics-portfolio/tree/main/02-nyc-heat-vulnerability-gis">
+      <img src="img/02.jpg" alt="Surface temperature hot spots in NYC" loading="lazy">
+      <div class="body"><span class="num">02</span><h3>NYC heat vulnerability GIS</h3>
+      <p>Greenspace cools neighborhoods by 0.92°F per 10 points once spatial effects are modeled. Found 34 significant hot spots.</p><span class="stack">GeoPandas · Moran's I · spatial regression</span></div></a>
+    <a class="card" href="https://github.com/nurgalinursultan14-afk/data-analytics-portfolio/tree/main/01-internship-market-sql">
+      <img src="img/01.jpg" alt="Weekly pace of internship postings" loading="lazy">
+      <div class="body"><span class="num">01</span><h3>The 2027 internship market, in SQL</h3>
+      <p>1 in 4 postings closed within two weeks, and 46% of the season's postings landed in three September weeks.</p><span class="stack">SQL · window functions · git-history mining</span></div></a>
+    <a class="card" href="https://github.com/nurgalinursultan14-afk/data-analytics-portfolio/tree/main/04-internship-scraper-ranker">
+      <div class="noimg" aria-hidden="true">🔎</div>
+      <div class="body"><span class="num">04</span><h3>Internship scraper and fit ranker</h3>
+      <p>Scraped and ranked 1,560 live postings. The ranking held up under ±30% weight changes (Kendall's τ = 0.95).</p><span class="stack">requests · BeautifulSoup · pytest</span></div></a>
+  </div>
+
+  <footer>All projects use real public data and can be rerun from their scripts. Built with plain HTML, no tracking.</footer>
+</div>
+</body>
+</html>

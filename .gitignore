@@ -6,3 +6,7 @@ __pycache__/
 05-citibike-sql/data/*.zip
 06-olist-ecommerce-sql/output/olist.db
 06-olist-ecommerce-sql/data/*.csv
+08-olist-dbt/olist.duckdb*
+08-olist-dbt/target/
+08-olist-dbt/logs/
+08-olist-dbt/.user.yml

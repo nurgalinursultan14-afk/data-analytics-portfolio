@@ -1,0 +1,9 @@
+# Local, free warehouse: DuckDB. To run on BigQuery instead, add a target with
+# `type: bigquery` (see README) and run `dbt build --target bigquery`.
+olist:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: olist.duckdb
+      threads: 4

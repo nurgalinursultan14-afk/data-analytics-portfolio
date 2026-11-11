@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: olist_raw
+    description: Raw CSVs from the public Olist dataset, downloaded by project 06's build_db.py.
+    meta:
+      external_location: "../06-olist-ecommerce-sql/data/{name}.csv"
+    tables:
+      - name: olist_orders_dataset
+      - name: olist_customers_dataset
+      - name: olist_order_items_dataset
+      - name: olist_order_reviews_dataset
+      - name: olist_products_dataset
+      - name: olist_sellers_dataset
+      - name: product_category_name_translation
