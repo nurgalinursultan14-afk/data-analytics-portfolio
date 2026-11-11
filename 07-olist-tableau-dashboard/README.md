@@ -4,7 +4,7 @@ An interactive dashboard for a marketplace operations manager. It answers three 
 
 **Tools:** Tableau Public (KPIs, calculated fields, LOD expressions, parameters, dashboard actions), SQL (SQLite) and pandas for the extracts.
 
-> **Status:** the data extracts and a Python prototype of the layout are done. The Tableau Public version is being built from the guide below. <!-- TODO: replace this line with the Tableau Public link and a screenshot -->
+> **Live interactive version:** [open the dashboard](https://nurgalinursultan14-afk.github.io/data-analytics-portfolio/olist-dashboard.html). Filter by month, category and state, and click a state to drill in. It's built by `build_web_dashboard.py` and served from `docs/`. The Tableau Public version is being built from the guide below. <!-- TODO: replace this line with the Tableau Public link and a screenshot -->
 
 ![Python prototype of the dashboard](output/prototype.png)
 
@@ -53,6 +53,7 @@ The export prints sanity checks that match project 06: 94,703 customers, a 2.2% 
 python ../06-olist-ecommerce-sql/build_db.py   # once: downloads the data, builds olist.db
 python export_extracts.py                      # -> data/orders.csv, data/sellers.csv
 python prototype.py                            # -> output/prototype.png
+python build_web_dashboard.py                  # -> ../docs/olist-dashboard.html (interactive)
 ```
 
 ## Limitations

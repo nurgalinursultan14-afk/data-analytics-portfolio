@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Olist Marketplace Dashboard</title>
+<meta name="description" content="Interactive dashboard of 97,905 Olist marketplace orders: sales, late deliveries by state and their effect on reviews and repeat purchases.">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root {
+  --bg: #f6f7f9; --card: #ffffff; --ink: #14171f; --muted: #5d6475; --line: #e4e7ec;
+  --accent: #2a6fdb; --accent-soft: #dbe7fb; --bad: #d64545; --good: #1f9d6b; --grid: #eceef2;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1218; --card: #171b23; --ink: #e9ecf2; --muted: #9aa3b5; --line: #262c38;
+    --accent: #6c9cf0; --accent-soft: #1e2a44; --bad: #ef6b6b; --good: #3cc58e; --grid: #222835;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1218; --card: #171b23; --ink: #e9ecf2; --muted: #9aa3b5; --line: #262c38;
+  --accent: #6c9cf0; --accent-soft: #1e2a44; --bad: #ef6b6b; --good: #3cc58e; --grid: #222835;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px; }
+header h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: -0.01em; }
+header p { margin: 0; color: var(--muted); font-size: 14px; }
+header a { color: var(--accent); }
+.filters { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; margin: 20px 0 16px; padding: 14px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; }
+.filters label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted); }
+select, button { font: inherit; font-size: 14px; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; }
+button { cursor: pointer; }
+button:hover { border-color: var(--accent); }
+.chip { display: none; align-items: center; gap: 6px; background: var(--accent-soft); color: var(--ink); border-radius: 999px; padding: 4px 10px; font-size: 13px; }
+.chip.on { display: inline-flex; }
+.kpis { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 16px; }
+.kpi { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+.kpi .v { font-size: 24px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.kpi .l { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 12px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; min-width: 0; }
+.card h2 { font-size: 14px; margin: 0 0 2px; }
+.card .sub { font-size: 12px; color: var(--muted); margin: 0 0 10px; }
+.chart { position: relative; height: 260px; }
+.tall { height: 340px; }
+footer { margin-top: 20px; font-size: 12px; color: var(--muted); }
+@media (max-width: 860px) {
+  .kpis { grid-template-columns: repeat(2, 1fr); }
+  .grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Olist marketplace: sales, delivery and customer experience</h1>
+    <p>97,905 orders, Jan 2017 to Aug 2018 · built from the SQL model in
+      <a href="https://github.com/nurgalinursultan14-afk/data-analytics-portfolio/tree/main/06-olist-ecommerce-sql">project 06</a> ·
+      <a href="https://github.com/nurgalinursultan14-afk/data-analytics-portfolio/tree/main/07-olist-tableau-dashboard">source</a></p>
+  </header>
+
+  <div class="filters" role="group" aria-label="Filters">
+    <label>From <select id="from"></select></label>
+    <label>To <select id="to"></select></label>
+    <label>Category <select id="cat"><option value="-1">All categories</option></select></label>
+    <span class="chip" id="stateChip">State: <strong id="stateName"></strong> <button id="clearState" aria-label="Clear state filter">×</button></span>
+    <button id="reset">Reset</button>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="v" id="kGmv"></div><div class="l">GMV (R$)</div></div>
+    <div class="kpi"><div class="v" id="kOrders"></div><div class="l">Orders</div></div>
+    <div class="kpi"><div class="v" id="kLate"></div><div class="l">Late deliveries</div></div>
+    <div class="kpi"><div class="v" id="kReview"></div><div class="l">Average review</div></div>
+    <div class="kpi"><div class="v" id="kRepeat"></div><div class="l">First-time buyers who came back</div></div>
+  </div>
+
+  <div class="grid">
+    <div class="card"><h2>Monthly GMV</h2><p class="sub">R$ thousands</p><div class="chart"><canvas id="cMonth"></canvas></div></div>
+    <div class="card"><h2>Reviews by delivery vs. promise</h2><p class="sub">Average stars. Late orders in red.</p><div class="chart"><canvas id="cBucket"></canvas></div></div>
+    <div class="card"><h2>Late-delivery rate by state</h2><p class="sub">States with 500+ delivered orders in the selection. Click a bar to filter.</p><div class="chart tall"><canvas id="cState"></canvas></div></div>
+    <div class="card"><h2>Top categories by GMV</h2><p class="sub">R$ thousands. Category of each order's most expensive item.</p><div class="chart tall"><canvas id="cCat"></canvas></div></div>
+  </div>
+
+  <footer>Data: Olist Brazilian e-commerce public dataset (MIT). Late = delivered after the date promised at checkout. By Nursultan Nurgali.</footer>
+</div>
+
+<script>
+const D = /*__DATA__*/null;
+const $ = (id) => document.getElementById(id);
+const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const state = { from: 0, to: D.months.length - 1, cat: -1, st: -1 };
+
+D.months.forEach((m, i) => { $('from').add(new Option(m, i)); $('to').add(new Option(m, i)); });
+D.categories.forEach((c, i) => $('cat').add(new Option(c, i)));
+$('to').value = state.to;
+
+const fmt = new Intl.NumberFormat('en-US');
+const pct = (x) => (isFinite(x) ? (x * 100).toFixed(1) + '%' : '—');
+
+function filtered(rows, ignoreState) {
+  return rows.filter(r => r[0] >= state.from && r[0] <= state.to &&
+    (state.cat < 0 || r[2] === state.cat) && (ignoreState || state.st < 0 || r[1] === state.st));
+}
+
+function sum(rows, i) { let s = 0; for (const r of rows) s += r[i]; return s; }
+
+let charts = {};
+function chart(id, cfg) {
+  if (charts[id]) charts[id].destroy();
+  charts[id] = new Chart($(id), cfg);
+}
+
+function baseOpts(extra = {}) {
+  const ink = css('--muted'), grid = css('--grid');
+  return Object.assign({
+    responsive: true, maintainAspectRatio: false, animation: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { color: ink }, grid: { color: grid } },
+      y: { ticks: { color: ink }, grid: { color: grid }, beginAtZero: true },
+    },
+  }, extra);
+}
+
+function render() {
+  const rows = filtered(D.cube, false);
+  // cube columns: 0 month, 1 state, 2 cat, 3 orders, 4 gmv, 5 delivered, 6 late, 7 revSum, 8 revN, 9 first, 10 firstReturned
+  $('kGmv').textContent = fmt.format(Math.round(sum(rows, 4)));
+  $('kOrders').textContent = fmt.format(sum(rows, 3));
+  $('kLate').textContent = pct(sum(rows, 6) / sum(rows, 5));
+  const rn = sum(rows, 8);
+  $('kReview').textContent = rn ? (sum(rows, 7) / rn).toFixed(2) + ' ★' : '—';
+  $('kRepeat').textContent = pct(sum(rows, 10) / sum(rows, 9));
+
+  // Monthly GMV
+  const months = D.months.slice(state.from, state.to + 1);
+  const gm = months.map(() => 0);
+  for (const r of rows) gm[r[0] - state.from] += r[4];
+  chart('cMonth', { type: 'line', data: { labels: months, datasets: [{ data: gm.map(v => v / 1000), borderColor: css('--accent'), backgroundColor: css('--accent-soft'), fill: true, tension: 0.25, pointRadius: 2 }] }, options: baseOpts() });
+
+  // Reviews by lateness bucket
+  const brows = filtered(D.bcube, false);
+  const bs = D.buckets.map(() => 0), bn = D.buckets.map(() => 0);
+  for (const r of brows) { bs[r[3]] += r[4]; bn[r[3]] += r[5]; }
+  chart('cBucket', { type: 'bar', data: { labels: D.buckets, datasets: [{ data: bs.map((s, i) => bn[i] ? +(s / bn[i]).toFixed(2) : null), backgroundColor: D.buckets.map(b => b.includes('late') ? css('--bad') : css('--accent')), borderRadius: 4 }] },
+    options: baseOpts({ indexAxis: 'y', scales: { x: { min: 0, max: 5, ticks: { color: css('--muted') }, grid: { color: css('--grid') } }, y: { ticks: { color: css('--muted') }, grid: { display: false } } } }) });
+
+  // Late rate by state (ignores the state filter so you can compare)
+  const srows = filtered(D.cube, true);
+  const sd = D.states.map(() => 0), sl = D.states.map(() => 0);
+  for (const r of srows) { sd[r[1]] += r[5]; sl[r[1]] += r[6]; }
+  const st = D.states.map((s, i) => ({ s, i, rate: sd[i] ? sl[i] / sd[i] : 0, n: sd[i] })).filter(x => x.n >= 500).sort((a, b) => b.rate - a.rate);
+  chart('cState', { type: 'bar', data: { labels: st.map(x => x.s), datasets: [{ data: st.map(x => +(x.rate * 100).toFixed(1)),
+      backgroundColor: st.map(x => x.i === state.st ? css('--ink') : x.rate > 0.1 ? css('--bad') : css('--accent')), borderRadius: 3 }] },
+    options: baseOpts({ onClick: (e, els) => { if (els.length) { const pick = st[els[0].index].i; state.st = state.st === pick ? -1 : pick; render(); } },
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => `${c.raw}% late · ${fmt.format(st[c.dataIndex].n)} delivered` } } } }) });
+
+  // Top categories
+  const cg = D.categories.map(() => 0);
+  for (const r of filtered(D.cube, false)) cg[r[2]] += r[4];
+  const cats = D.categories.map((c, i) => ({ c, g: cg[i] })).filter(x => x.c !== 'other' && x.g > 0).sort((a, b) => b.g - a.g).slice(0, 10);
+  chart('cCat', { type: 'bar', data: { labels: cats.map(x => x.c), datasets: [{ data: cats.map(x => Math.round(x.g / 1000)), backgroundColor: css('--accent'), borderRadius: 3 }] },
+    options: baseOpts({ indexAxis: 'y', scales: { x: { ticks: { color: css('--muted') }, grid: { color: css('--grid') } }, y: { ticks: { color: css('--muted') }, grid: { display: false } } } }) });
+
+  $('stateChip').classList.toggle('on', state.st >= 0);
+  $('stateName').textContent = state.st >= 0 ? D.states[state.st] : '';
+}
+
+$('from').onchange = (e) => { state.from = +e.target.value; if (state.from > state.to) { state.to = state.from; $('to').value = state.to; } render(); };
+$('to').onchange = (e) => { state.to = +e.target.value; if (state.to < state.from) { state.from = state.to; $('from').value = state.from; } render(); };
+$('cat').onchange = (e) => { state.cat = +e.target.value; render(); };
+$('clearState').onclick = () => { state.st = -1; render(); };
+$('reset').onclick = () => { Object.assign(state, { from: 0, to: D.months.length - 1, cat: -1, st: -1 }); $('from').value = 0; $('to').value = state.to; $('cat').value = -1; render(); };
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', render);
+render();
+</script>
+</body>
+</html>
