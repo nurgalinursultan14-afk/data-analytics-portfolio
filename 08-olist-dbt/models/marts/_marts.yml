@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: fct_orders
+    description: One row per completed order, Jan 2017 to Aug 2018.
+    columns:
+      - name: order_id
+        data_tests: [unique, not_null]
+      - name: customer_unique_id
+        data_tests:
+          - not_null
+          - relationships: {arguments: {to: ref('dim_customers'), field: customer_unique_id}}
+      - name: gmv
+        data_tests: [not_null]
+      - name: is_late
+        data_tests:
+          - accepted_values: {arguments: {values: [0, 1], quote: false}}
+  - name: dim_customers
+    description: One row per real customer (customer_unique_id).
+    columns:
+      - name: customer_unique_id
+        data_tests: [unique, not_null]
+  - name: mart_monthly_kpis
+    columns:
+      - name: purchase_month
+        data_tests: [unique, not_null]
+  - name: mart_cohort_retention
+    data_tests:
+      - unique_combination_of_columns:
+          arguments: {columns: [cohort_month, months_since_first]}
+  - name: mart_delivery_by_state
+    columns:
+      - name: customer_state
+        data_tests: [unique, not_null]

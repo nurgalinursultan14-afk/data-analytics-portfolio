@@ -1,0 +1,101 @@
+origin,method,mae,mape,two_week_total_error_pct
+2017-11-12,Seasonal naive (same weekday last week),137.07,26.81,-44.02
+2017-11-12,Weekday average (last 4 weeks),154.11,33.25,-50.71
+2017-11-12,"Holt-Winters (damped trend, weekly season)",132.09,23.8,-42.15
+2017-11-12,Regression (trend + weekday + events),146.38,29.93,-48.16
+2017-11-12,"Ensemble (average of naive, Holt-Winters, regression)",136.09,25.42,-44.78
+2017-11-26,Seasonal naive (same weekday last week),254.71,108.76,59.02
+2017-11-26,Weekday average (last 4 weeks),104.21,37.31,-14.89
+2017-11-26,"Holt-Winters (damped trend, weekly season)",246.83,99.93,92.45
+2017-11-26,Regression (trend + weekday + events),101.71,34.83,-11.74
+2017-11-26,"Ensemble (average of naive, Holt-Winters, regression)",127.05,55.32,46.58
+2017-12-10,Seasonal naive (same weekday last week),68.29,52.8,40.41
+2017-12-10,Weekday average (last 4 weeks),116.46,95.66,68.91
+2017-12-10,"Holt-Winters (damped trend, weekly season)",52.07,46.15,28.23
+2017-12-10,Regression (trend + weekday + events),44.3,39.33,19.9
+2017-12-10,"Ensemble (average of naive, Holt-Winters, regression)",50.82,44.53,29.51
+2017-12-24,Seasonal naive (same weekday last week),60.93,44.55,-13.51
+2017-12-24,Weekday average (last 4 weeks),81.29,73.74,36.07
+2017-12-24,"Holt-Winters (damped trend, weekly season)",79.77,43.36,-47.16
+2017-12-24,Regression (trend + weekday + events),31.01,22.34,-8.43
+2017-12-24,"Ensemble (average of naive, Holt-Winters, regression)",53.78,34.05,-23.04
+2018-01-07,Seasonal naive (same weekday last week),61.79,22.32,-21.77
+2018-01-07,Weekday average (last 4 weeks),85.75,33.96,-34.25
+2018-01-07,"Holt-Winters (damped trend, weekly season)",19.35,7.7,-2.43
+2018-01-07,Regression (trend + weekday + events),39.25,15.18,-15.68
+2018-01-07,"Ensemble (average of naive, Holt-Winters, regression)",35.27,12.91,-13.29
+2018-01-21,Seasonal naive (same weekday last week),26.21,12.22,10.55
+2018-01-21,Weekday average (last 4 weeks),25.75,11.0,-8.38
+2018-01-21,"Holt-Winters (damped trend, weekly season)",18.77,9.02,4.59
+2018-01-21,Regression (trend + weekday + events),21.87,10.5,6.7
+2018-01-21,"Ensemble (average of naive, Holt-Winters, regression)",21.88,10.37,7.28
+2018-02-04,Seasonal naive (same weekday last week),18.21,7.91,-0.66
+2018-02-04,Weekday average (last 4 weeks),23.21,10.42,5.0
+2018-02-04,"Holt-Winters (damped trend, weekly season)",24.32,11.07,6.15
+2018-02-04,Regression (trend + weekday + events),28.02,13.12,11.05
+2018-02-04,"Ensemble (average of naive, Holt-Winters, regression)",21.95,10.07,5.51
+2018-02-18,Seasonal naive (same weekday last week),34.57,12.97,-10.9
+2018-02-18,Weekday average (last 4 weeks),33.68,12.93,-12.89
+2018-02-18,"Holt-Winters (damped trend, weekly season)",20.6,7.8,-7.05
+2018-02-18,Regression (trend + weekday + events),10.93,4.39,0.65
+2018-02-18,"Ensemble (average of naive, Holt-Winters, regression)",18.58,7.01,-5.76
+2018-03-04,Seasonal naive (same weekday last week),40.57,18.37,16.76
+2018-03-04,Weekday average (last 4 weeks),21.32,9.63,5.2
+2018-03-04,"Holt-Winters (damped trend, weekly season)",51.81,23.39,22.51
+2018-03-04,Regression (trend + weekday + events),45.22,20.56,19.65
+2018-03-04,"Ensemble (average of naive, Holt-Winters, regression)",45.25,20.56,19.64
+2018-03-18,Seasonal naive (same weekday last week),43.29,19.26,0.19
+2018-03-18,Weekday average (last 4 weeks),32.5,15.73,7.79
+2018-03-18,"Holt-Winters (damped trend, weekly season)",30.32,15.17,9.88
+2018-03-18,Regression (trend + weekday + events),51.45,25.71,22.55
+2018-03-18,"Ensemble (average of naive, Holt-Winters, regression)",36.77,18.14,10.88
+2018-04-01,Seasonal naive (same weekday last week),30.07,13.18,-6.66
+2018-04-01,Weekday average (last 4 weeks),21.43,10.13,1.91
+2018-04-01,"Holt-Winters (damped trend, weekly season)",25.42,12.58,4.96
+2018-04-01,Regression (trend + weekday + events),46.62,23.1,20.8
+2018-04-01,"Ensemble (average of naive, Holt-Winters, regression)",24.55,12.28,6.37
+2018-04-15,Seasonal naive (same weekday last week),28.21,12.09,-6.99
+2018-04-15,Weekday average (last 4 weeks),18.18,7.5,-5.41
+2018-04-15,"Holt-Winters (damped trend, weekly season)",18.51,8.75,1.0
+2018-04-15,Regression (trend + weekday + events),24.6,12.46,9.66
+2018-04-15,"Ensemble (average of naive, Holt-Winters, regression)",18.36,8.72,1.22
+2018-04-29,Seasonal naive (same weekday last week),36.79,13.63,-10.53
+2018-04-29,Weekday average (last 4 weeks),40.39,14.6,-13.31
+2018-04-29,"Holt-Winters (damped trend, weekly season)",59.38,20.89,-22.27
+2018-04-29,Regression (trend + weekday + events),25.1,8.34,-5.07
+2018-04-29,"Ensemble (average of naive, Holt-Winters, regression)",37.77,13.13,-12.62
+2018-05-13,Seasonal naive (same weekday last week),88.86,65.66,42.0
+2018-05-13,Weekday average (last 4 weeks),82.46,57.44,27.31
+2018-05-13,"Holt-Winters (damped trend, weekly season)",87.25,60.7,27.8
+2018-05-13,Regression (trend + weekday + events),85.69,59.27,25.58
+2018-05-13,"Ensemble (average of naive, Holt-Winters, regression)",86.98,61.8,31.79
+2018-05-27,Seasonal naive (same weekday last week),59.71,32.51,-24.74
+2018-05-27,Weekday average (last 4 weeks),61.11,38.31,29.46
+2018-05-27,"Holt-Winters (damped trend, weekly season)",56.57,29.16,-31.43
+2018-05-27,Regression (trend + weekday + events),46.54,30.1,24.44
+2018-05-27,"Ensemble (average of naive, Holt-Winters, regression)",42.91,24.29,-10.58
+2018-06-10,Seasonal naive (same weekday last week),24.36,11.3,-3.27
+2018-06-10,Weekday average (last 4 weeks),24.11,10.83,-10.73
+2018-06-10,"Holt-Winters (damped trend, weekly season)",24.14,12.11,8.06
+2018-06-10,Regression (trend + weekday + events),17.37,8.2,-0.49
+2018-06-10,"Ensemble (average of naive, Holt-Winters, regression)",18.63,9.13,1.43
+2018-06-24,Seasonal naive (same weekday last week),31.07,21.83,12.44
+2018-06-24,Weekday average (last 4 weeks),32.11,22.06,6.1
+2018-06-24,"Holt-Winters (damped trend, weekly season)",41.21,28.97,22.17
+2018-06-24,Regression (trend + weekday + events),27.31,19.19,8.2
+2018-06-24,"Ensemble (average of naive, Holt-Winters, regression)",31.77,22.74,14.27
+2018-07-08,Seasonal naive (same weekday last week),67.29,39.52,-10.47
+2018-07-08,Weekday average (last 4 weeks),52.64,32.79,4.45
+2018-07-08,"Holt-Winters (damped trend, weekly season)",66.33,32.01,-28.31
+2018-07-08,Regression (trend + weekday + events),50.3,29.49,-0.7
+2018-07-08,"Ensemble (average of naive, Holt-Winters, regression)",60.56,33.2,-13.16
+2018-07-22,Seasonal naive (same weekday last week),44.29,16.82,-9.06
+2018-07-22,Weekday average (last 4 weeks),74.75,27.27,-28.56
+2018-07-22,"Holt-Winters (damped trend, weekly season)",31.71,12.37,-4.32
+2018-07-22,Regression (trend + weekday + events),78.82,28.82,-30.12
+2018-07-22,"Ensemble (average of naive, Holt-Winters, regression)",43.56,15.73,-14.5
+2018-08-05,Seasonal naive (same weekday last week),41.07,16.82,6.48
+2018-08-05,Weekday average (last 4 weeks),48.36,15.46,-17.15
+2018-08-05,"Holt-Winters (damped trend, weekly season)",48.85,19.92,17.78
+2018-08-05,Regression (trend + weekday + events),76.97,26.99,-28.26
+2018-08-05,"Ensemble (average of naive, Holt-Winters, regression)",25.84,9.51,-1.33
