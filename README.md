@@ -8,7 +8,7 @@ I turn messy public data into clear answers for the people who make decisions: S
 
 **Contact:** [GitHub](https://github.com/nurgalinursultan14-afk) · <!-- TODO: add LinkedIn URL --> LinkedIn · <!-- TODO: add email --> Email · <!-- TODO: add resume link --> Resume
 
-**Toolkit:** SQL (CTEs, window functions, star schemas, cohort and RFM analysis) · Python (pandas, statsmodels, scikit-learn, GeoPandas) · statistics (hypothesis tests, regression, power analysis, spatial autocorrelation) · Tableau · dbt · web scraping · pytest · git
+**Toolkit:** SQL (CTEs, window functions, star schemas, cohort and RFM analysis) · Python (pandas, statsmodels, scikit-learn, GeoPandas) · statistics (hypothesis tests, regression, power analysis, spatial autocorrelation) · Tableau · dbt · forecasting · web scraping · pytest · git
 
 ---
 
@@ -16,6 +16,7 @@ I turn messy public data into clear answers for the people who make decisions: S
 
 | # | Project | Headline result | Skills |
 |---|---|---|---|
+| 09 | [**Forecasting Daily Orders**](09-olist-demand-forecast/) | Backtested 5 methods on 20 two-week windows. A simple ensemble cut forecast error **22%** below the naive baseline. | Time series (Holt-Winters, regression), rolling-origin backtesting, statsmodels |
 | 08 | [**Olist Marketplace, in dbt**](08-olist-dbt/) | Rebuilt project 06 as a production-style dbt pipeline with **46 automated data tests**. Retention and GMV are reproduced exactly. | dbt (staging/marts, generic and singular tests, lineage), DuckDB, BigQuery-ready |
 | 07 | [**Olist Marketplace Dashboard, in Tableau**](07-olist-tableau-dashboard/) | One screen for sales, late deliveries by state and their effect on reviews (1.7 stars when 8+ days late vs. 4.3 when early). **[Open the live dashboard](https://nurgalinursultan14-afk.github.io/data-analytics-portfolio/olist-dashboard.html)** | Tableau (LOD, parameters, dashboard actions), SQL extracts |
 | 06 | [**E-commerce Customer Retention, in SQL**](06-olist-ecommerce-sql/) | Only **2.2%** of 94,703 customers ever came back, and orders 8+ days late drew **1-star reviews 70%** of the time. | 7-table SQL model, cohort retention, RFM with `NTILE`, Pareto |
