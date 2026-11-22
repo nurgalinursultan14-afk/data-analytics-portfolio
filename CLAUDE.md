@@ -26,9 +26,10 @@ A public portfolio of end-to-end data analytics projects on real open data, owne
 | 07 | `07-olist-tableau-dashboard/` | `export_extracts.py`, `prototype.py`, `build_web_dashboard.py` | yes |
 | 08 | `08-olist-dbt/` | `dbt build --profiles-dir .` | yes |
 | 09 | `09-olist-demand-forecast/` | `forecast.py` | yes |
+| 10 | `10-football-scouting-sql/` | `build_db.py` (~1.1 GB StatsBomb JSON, cached in `data/`), `run_analysis.py` | branch `claude/blissful-allen-m5sfrp` (PR pending) |
 | — | `docs/` | `index.html`, `olist-dashboard.html` (GitHub Pages) | yes |
 
-Large generated files are git-ignored: `*.db`, `*.duckdb`, the downloaded Citi Bike zip and Olist CSVs, and dbt's `target/` and `logs/`.
+Large generated files are git-ignored: `*.db`, `*.duckdb`, the downloaded Citi Bike zip, Olist CSVs and StatsBomb JSON (`10-football-scouting-sql/data/`), and dbt's `target/` and `logs/`.
 
 ## 3. Current Status
 
@@ -44,7 +45,7 @@ Large generated files are git-ignored: `*.db`, `*.duckdb`, the downloaded Citi B
 - GitHub Pages: not verified (task 1). Until it is on, the site and live-dashboard links in the README don't work. Every relative link in `README.md` and `docs/` points to a file on `main`.
 - Project 07: the Tableau Public version is not published. A TODO in its README asks for the link and a screenshot.
 - Contact TODOs (task 2): `README.md` has placeholders for the LinkedIn URL, email and resume link. In `docs/index.html` the LinkedIn (`YOUR-HANDLE`) and Resume (`YOUR-RESUME-LINK`) buttons are commented out so the live site has no broken links; fill them and un-comment.
-- No sports or football project yet, which is the biggest gap for sports analytics roles.
+- Project 10 (football scouting, StatsBomb Premier League 2015/16, 46 wide forwards ranked) is built on branch `claude/blissful-allen-m5sfrp`, waiting for Nurs to review and merge. StatsBomb's terms ask published work to credit StatsBomb and use their logo; the README credits StatsBomb in text, and the logo is not added yet.
 - No Excel deliverable, so Excel on the resume has nothing to back it.
 - Resume v14 lists only 3 projects. Tableau, dbt and forecasting are now on `main` but not on the resume.
 
@@ -57,10 +58,9 @@ Large generated files are git-ignored: `*.db`, `*.duckdb`, the downloaded Citi B
 1. **Turn on GitHub Pages.** Nurs goes to Settings → Pages, sets Source to "Deploy from a branch" with `main` and `/docs`. Then check that the site and `olist-dashboard.html` load at https://nurgalinursultan14-afk.github.io/data-analytics-portfolio/.
 2. **Fill the contact TODOs.** Nurs supplies the real LinkedIn URL, contact email and resume link; never invent them. Replace the three `<!-- TODO -->` placeholders on the Contact line of `README.md`, and the `YOUR-HANDLE` LinkedIn and `YOUR-RESUME-LINK` placeholders in `docs/index.html` (then un-comment those two buttons).
 3. **Publish project 07 to Tableau Public.** Nurs builds and publishes it by following `07-olist-tableau-dashboard/README.md`, steps 1–6. Then add the Tableau Public link and a screenshot to the project 07 README and the front page.
-4. **Project 10: football scouting in SQL.** Use StatsBomb Open Data (free, with license terms). Load it into SQLite or DuckDB, clean it in SQL, compute per-90 metrics with a minutes threshold, and produce a ranked shortlist for one position. Follow the repo pattern: `build_db.py`, `sql/`, `run_analysis.py`, `output/` and a README with findings and limitations. Add it to the front-page table.
-5. **Project 10 dashboard.** Export Tableau extracts for the scouting shortlist the same way project 07 does. Nurs publishes them to Tableau Public, and the link goes into the README.
-6. **Excel deliverable.** Make an `.xlsx` with a real PivotTable and XLOOKUP formulas, from the scouting shortlist or the Olist KPIs. Commit it with a short README explaining what each sheet shows.
-7. **Housekeeping.** With Nurs's approval, delete the merged remote branches `sql-citibike-project`, `sql-olist-project` and `claude/project-thread-93rkn8`, and extend CI to cover any new tests.
+4. **Project 10 dashboard.** Export Tableau extracts for the scouting shortlist the same way project 07 does. Nurs publishes them to Tableau Public, and the link goes into the README.
+5. **Excel deliverable.** Make an `.xlsx` with a real PivotTable and XLOOKUP formulas, from the scouting shortlist or the Olist KPIs. Commit it with a short README explaining what each sheet shows.
+6. **Housekeeping.** With Nurs's approval, delete the merged remote branches `sql-citibike-project`, `sql-olist-project` and `claude/project-thread-93rkn8`, and extend CI to cover any new tests.
 
 ## 5. Operational Rules & Guardrails
 

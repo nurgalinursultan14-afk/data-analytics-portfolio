@@ -1,0 +1,10 @@
+check_name,value
+matches,380.0
+"events kept (shots, passes, carries, dribbles, recoveries, interceptions)",719060.0
+goals in final scores,1026.0
+goals scored from shots (the rest are own goals),988.0
+shots whose key pass is missing,0.0
+player minutes per team per match (11 x ~94 expected),1038.0
+lineup spells that end before they start (counted as 0),0.0
+players with any minutes,550.0
+wide forwards in the scouting pool (900+ wide minutes),46.0

@@ -10,3 +10,5 @@ __pycache__/
 08-olist-dbt/target/
 08-olist-dbt/logs/
 08-olist-dbt/.user.yml
+10-football-scouting-sql/output/scouting.db
+10-football-scouting-sql/data/

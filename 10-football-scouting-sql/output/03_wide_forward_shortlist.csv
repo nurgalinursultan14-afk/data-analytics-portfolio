@@ -1,0 +1,11 @@
+rank,player,team,minutes,score,np_xg_90,xa_90,key_passes_90,dribbles_won_90,prog_carries_90,box_passes_90,np_goals,assists
+1,Alexis Alejandro Sánchez Sánchez,Arsenal,2518,82.5,0.403,0.272,2.04,3.68,5.11,3.79,13,4
+2,Dimitri Payet,West Ham United,2688,81.8,0.17,0.364,3.75,2.51,5.26,4.76,9,12
+3,Kevin De Bruyne,Manchester City,2086,76.7,0.194,0.406,3.37,1.86,6.0,3.71,7,9
+4,Riyad Mahrez,Leicester City,3107,76.5,0.216,0.276,1.91,3.56,6.02,2.17,13,10
+5,Philippe Coutinho Correia,Liverpool,2105,75.3,0.305,0.219,2.05,2.18,6.2,2.48,8,5
+6,Gerard Deulofeu Lázaro,Everton,1447,75.2,0.097,0.379,2.3,2.24,8.21,3.17,2,9
+6,Willian Borges da Silva,Chelsea,2851,75.2,0.118,0.231,2.62,2.21,6.69,4.23,5,7
+8,Dušan Tadić,Southampton,2348,70.8,0.23,0.285,2.95,1.46,4.37,4.1,6,11
+9,Andros Townsend,Newcastle United,1128,70.7,0.089,0.219,2.23,3.27,9.18,2.0,4,2
+10,Eden Hazard,Chelsea,2312,70.2,0.093,0.177,2.53,2.92,9.89,2.14,4,3
