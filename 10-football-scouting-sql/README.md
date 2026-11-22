@@ -52,6 +52,10 @@ The Tableau Public version is built from the guide below. `prototype.py` draws i
 5. **Dashboard:** 1200 × 800, tiles across the top and the three charts below, matching the prototype. Make the shortlist a **filter action** that drives the tiles, the profile and the shot map, and add the *Club tier* parameter control.
 6. **Publish** to Tableau Public. Credit StatsBomb in the dashboard footer, then put the link and a screenshot at the top of this section and on the portfolio front page.
 
+## Excel version
+
+[`excel/scouting_shortlist.xlsx`](excel/) has the same 46 players as an Excel Table, a **PivotTable** by club tier and club, and an **XLOOKUP** player card with a drop-down list. See [`excel/README.md`](excel/README.md) for what each sheet shows.
+
 ## Data model
 
 ```
@@ -95,6 +99,7 @@ python build_db.py      # downloads ~1.1 GB of JSON on first run (cached in data
 python run_analysis.py  # writes the CSVs, results.json and both charts to output/
 python export_extracts.py  # -> tableau/players.csv, tableau/shots.csv
 python prototype.py        # -> output/prototype.png
+python build_excel.py      # -> excel/scouting_shortlist.xlsx (needs LibreOffice for the PivotTable)
 ```
 
 ## Limitations

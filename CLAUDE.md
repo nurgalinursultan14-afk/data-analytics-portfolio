@@ -26,7 +26,7 @@ A public portfolio of end-to-end data analytics projects on real open data, owne
 | 07 | `07-olist-tableau-dashboard/` | `export_extracts.py`, `prototype.py`, `build_web_dashboard.py` | yes |
 | 08 | `08-olist-dbt/` | `dbt build --profiles-dir .` | yes |
 | 09 | `09-olist-demand-forecast/` | `forecast.py` | yes |
-| 10 | `10-football-scouting-sql/` | `build_db.py` (~1.1 GB StatsBomb JSON, cached in `data/`), `run_analysis.py`, `export_extracts.py`, `prototype.py` | yes |
+| 10 | `10-football-scouting-sql/` | `build_db.py` (~1.1 GB StatsBomb JSON, cached in `data/`), `run_analysis.py`, `export_extracts.py`, `prototype.py`, `build_excel.py` | yes |
 | — | `docs/` | `index.html`, `olist-dashboard.html` (GitHub Pages) | yes |
 
 Large generated files are git-ignored: `*.db`, `*.duckdb`, the downloaded Citi Bike zip, Olist CSVs and StatsBomb JSON (`10-football-scouting-sql/data/`), and dbt's `target/` and `logs/`.
@@ -46,7 +46,7 @@ Large generated files are git-ignored: `*.db`, `*.duckdb`, the downloaded Citi B
 - Project 07: the Tableau Public version is not published. A TODO in its README asks for the link and a screenshot.
 - Contact TODOs (task 2): `README.md` has placeholders for the LinkedIn URL, email and resume link. In `docs/index.html` the LinkedIn (`YOUR-HANDLE`) and Resume (`YOUR-RESUME-LINK`) buttons are commented out so the live site has no broken links; fill them and un-comment.
 - Project 10 (football scouting, StatsBomb Premier League 2015/16, 46 wide forwards ranked) is on `main` (PR #6). Its Tableau extracts (`tableau/players.csv`, `tableau/shots.csv`), a Python prototype and a build guide are ready; the Tableau Public version is not published (task 4). StatsBomb's terms ask published work to credit StatsBomb and use their logo; the README credits StatsBomb in text, and the logo is not added yet.
-- No Excel deliverable, so Excel on the resume has nothing to back it.
+- Excel: `10-football-scouting-sql/excel/scouting_shortlist.xlsx` (Excel Table, a real PivotTable, XLOOKUP player card), built by `build_excel.py` (needs LibreOffice). XLOOKUP was not evaluated here (LibreOffice 24.2 lacks it); Nurs should open it once in Excel 365 and check the Payet card in `excel/README.md`.
 - Resume v14 lists only 3 projects. Tableau, dbt and forecasting are now on `main` but not on the resume.
 
 **Housekeeping**
@@ -59,7 +59,7 @@ Large generated files are git-ignored: `*.db`, `*.duckdb`, the downloaded Citi B
 2. **Fill the contact TODOs.** Nurs supplies the real LinkedIn URL, contact email and resume link; never invent them. Replace the three `<!-- TODO -->` placeholders on the Contact line of `README.md`, and the `YOUR-HANDLE` LinkedIn and `YOUR-RESUME-LINK` placeholders in `docs/index.html` (then un-comment those two buttons).
 3. **Publish project 07 to Tableau Public.** Nurs builds and publishes it by following `07-olist-tableau-dashboard/README.md`, steps 1–6. Then add the Tableau Public link and a screenshot to the project 07 README and the front page.
 4. **Publish the project 10 dashboard.** The extracts and guide are ready (`10-football-scouting-sql/README.md`, "Build it in Tableau Public"). Nurs builds and publishes it, then the link and a screenshot go into the project 10 README and the front page.
-5. **Excel deliverable.** Make an `.xlsx` with a real PivotTable and XLOOKUP formulas, from the scouting shortlist or the Olist KPIs. Commit it with a short README explaining what each sheet shows.
+5. **Check the Excel file in Excel 365.** Open `10-football-scouting-sql/excel/scouting_shortlist.xlsx`, confirm the Lookup card matches the values in `excel/README.md` and the PivotTable refreshes, then add Excel to the resume with this file as proof.
 6. **Housekeeping.** With Nurs's approval, delete the merged remote branches `sql-citibike-project`, `sql-olist-project` and `claude/project-thread-93rkn8`, and extend CI to cover any new tests.
 
 ## 5. Operational Rules & Guardrails
