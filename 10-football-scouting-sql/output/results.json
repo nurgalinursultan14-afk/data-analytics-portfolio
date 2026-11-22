@@ -1,0 +1,149 @@
+{
+  "data_quality": {
+    "matches": 380.0,
+    "events kept (shots, passes, carries, dribbles, recoveries, interceptions)": 719060.0,
+    "goals in final scores": 1026.0,
+    "goals scored from shots (the rest are own goals)": 988.0,
+    "shots whose key pass is missing": 0.0,
+    "player minutes per team per match (11 x ~94 expected)": 1038.0,
+    "lineup spells that end before they start (counted as 0)": 0.0,
+    "players with any minutes": 550.0,
+    "wide forwards in the scouting pool (900+ wide minutes)": 46.0
+  },
+  "top10": [
+    {
+      "rank": 1,
+      "player": "Alexis Alejandro Sánchez Sánchez",
+      "team": "Arsenal",
+      "score": 82.5
+    },
+    {
+      "rank": 2,
+      "player": "Dimitri Payet",
+      "team": "West Ham United",
+      "score": 81.8
+    },
+    {
+      "rank": 3,
+      "player": "Kevin De Bruyne",
+      "team": "Manchester City",
+      "score": 76.7
+    },
+    {
+      "rank": 4,
+      "player": "Riyad Mahrez",
+      "team": "Leicester City",
+      "score": 76.5
+    },
+    {
+      "rank": 5,
+      "player": "Philippe Coutinho Correia",
+      "team": "Liverpool",
+      "score": 75.3
+    },
+    {
+      "rank": 6,
+      "player": "Gerard Deulofeu Lázaro",
+      "team": "Everton",
+      "score": 75.2
+    },
+    {
+      "rank": 6,
+      "player": "Willian Borges da Silva",
+      "team": "Chelsea",
+      "score": 75.2
+    },
+    {
+      "rank": 8,
+      "player": "Dušan Tadić",
+      "team": "Southampton",
+      "score": 70.8
+    },
+    {
+      "rank": 9,
+      "player": "Andros Townsend",
+      "team": "Newcastle United",
+      "score": 70.7
+    },
+    {
+      "rank": 10,
+      "player": "Eden Hazard",
+      "team": "Chelsea",
+      "score": 70.2
+    }
+  ],
+  "outside_top_six": [
+    {
+      "rank": 1,
+      "player": "Dimitri Payet",
+      "team": "West Ham United",
+      "club_finish": 7,
+      "score": 81.8
+    },
+    {
+      "rank": 2,
+      "player": "Philippe Coutinho Correia",
+      "team": "Liverpool",
+      "club_finish": 8,
+      "score": 75.3
+    },
+    {
+      "rank": 3,
+      "player": "Willian Borges da Silva",
+      "team": "Chelsea",
+      "club_finish": 10,
+      "score": 75.2
+    },
+    {
+      "rank": 3,
+      "player": "Gerard Deulofeu Lázaro",
+      "team": "Everton",
+      "club_finish": 11,
+      "score": 75.2
+    },
+    {
+      "rank": 5,
+      "player": "Andros Townsend",
+      "team": "Newcastle United",
+      "club_finish": 18,
+      "score": 70.7
+    },
+    {
+      "rank": 6,
+      "player": "Eden Hazard",
+      "team": "Chelsea",
+      "club_finish": 10,
+      "score": 70.2
+    },
+    {
+      "rank": 7,
+      "player": "Pedro Eliezer Rodríguez Ledesma",
+      "team": "Chelsea",
+      "club_finish": 10,
+      "score": 65.5
+    },
+    {
+      "rank": 8,
+      "player": "Junior Stanislas",
+      "team": "AFC Bournemouth",
+      "club_finish": 16,
+      "score": 62.3
+    }
+  ],
+  "robustness": {
+    "pool_size": 46,
+    "kendall_tau_median": 0.955,
+    "kendall_tau_min": 0.872,
+    "top10_overlap_median": 10,
+    "top10_overlap_min": 8,
+    "always_top10": [
+      "Alexis Alejandro Sánchez Sánchez",
+      "Dimitri Payet",
+      "Gerard Deulofeu Lázaro",
+      "Kevin De Bruyne",
+      "Philippe Coutinho Correia",
+      "Riyad Mahrez",
+      "Willian Borges da Silva"
+    ]
+  }
+}

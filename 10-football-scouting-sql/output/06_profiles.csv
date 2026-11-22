@@ -1,0 +1,11 @@
+player,team,score,top_strength,percentile
+Alexis Alejandro Sánchez Sánchez,Arsenal,82.5,shooting (np xG),100.0
+Dimitri Payet,West Ham United,81.8,key passes,100.0
+Kevin De Bruyne,Manchester City,76.7,chance creation (xA),100.0
+Riyad Mahrez,Leicester City,76.5,dribbling,96.0
+Philippe Coutinho Correia,Liverpool,75.3,shooting (np xG),98.0
+Gerard Deulofeu Lázaro,Everton,75.2,chance creation (xA),98.0
+Willian Borges da Silva,Chelsea,75.2,passes into the box,98.0
+Dušan Tadić,Southampton,70.8,key passes,96.0
+Andros Townsend,Newcastle United,70.7,carrying the ball forward,93.0
+Eden Hazard,Chelsea,70.2,carrying the ball forward,98.0
