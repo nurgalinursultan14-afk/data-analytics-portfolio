@@ -2,7 +2,7 @@
 
 A mid-table club needs a winger. Which wide forwards created the most danger per 90 minutes, which of them play for clubs that might sell, and does the shortlist survive a change in what we value? This project loads every event of all 380 Premier League 2015/16 matches from StatsBomb Open Data into SQLite, computes per-90 metrics in SQL with a minutes threshold, and ranks the position with percentiles.
 
-**Tools:** SQL (SQLite: CTEs, window functions `PERCENT_RANK` / `RANK` / `ROW_NUMBER`, self-joins, conditional aggregation, `UNION ALL` reshaping), Python (JSON flattening, pandas, matplotlib, SciPy Kendall's τ).
+**Tools:** SQL (SQLite: CTEs, window functions `PERCENT_RANK` / `RANK` / `ROW_NUMBER`, self-joins, conditional aggregation, `UNION ALL` reshaping), Python (JSON flattening, pandas, matplotlib, SciPy Kendall's τ), Tableau Public (relationships, parameters, filter actions).
 
 **Data:** [StatsBomb Open Data](https://github.com/statsbomb/open-data), used under StatsBomb's free non-commercial terms. Data source: **StatsBomb**.
 
@@ -19,6 +19,38 @@ A mid-table club needs a winger. Which wide forwards created the most danger per
 | ![top 10 by scouting score](output/chart_top10.png) | ![shooters vs creators](output/chart_shoot_vs_create.png) |
 
 **So what?** For a mid-table club, the shortlist is Payet, Coutinho and Willian if the budget is large, and Deulofeu or Townsend if it isn't. Both of those last two need a closer look at a full season's minutes before any fee. The next step would be adding age, contract length and price, which StatsBomb's event data doesn't include.
+
+## Tableau dashboard
+
+<!-- TODO: Nurs adds the Tableau Public link and a screenshot here once published -->
+The Tableau Public version is built from the guide below. `prototype.py` draws its layout from the same extracts:
+
+![Python prototype of the scouting dashboard](output/prototype.png)
+
+*Python prototype. It opens on the best-scoring player outside the top six (Payet). In Tableau, clicking any player in the shortlist updates the tiles, the profile and the shot map.*
+
+`export_extracts.py` writes two tidy CSVs to `tableau/`. It checks that each player's shots add up to their non-penalty goals and xG in the analysis.
+
+| File | Grain | Key fields |
+|---|---|---|
+| `tableau/players.csv` | one row per pool player (46) | `score_rank`, `player`, `team`, `club_finish`, `club_tier`, `minutes`, `score`, six per-90 metrics, six percentiles (`p_*`), `np_goals`, `assists`, `np_xg`, `xa` |
+| `tableau/shots.csv` | one row per non-penalty shot (2,000) | `player_id`, `player`, `team`, `match_date`, `minute`, `x`, `y` (120 × 80 pitch), `xg`, `outcome`, `is_goal` |
+
+**Build it in Tableau Public**
+
+1. **Connect:** *Text file* → `tableau/players.csv`, then add `tableau/shots.csv` as a second source. Relate them on `player_id`.
+2. **Calculated fields**
+   - `Goals minus xG` = `SUM([np_goals]) - SUM([np_xg])`
+   - `Pitch x (vertical)` = `[x]` and `Pitch y` = `[y]`. StatsBomb's `y` starts at the attacker's left touchline, so with x on Rows the goal is at the top and left stays left, as in the prototype
+   - `Shot size` = `[xg]`
+3. **Parameter:** *Club tier* (All / Top six / 7th or lower), with a calculated filter `[Club tier] = "All" OR [club_tier] = [Club tier]`.
+4. **Sheets**
+   - *Shortlist*: `player` on Rows sorted by `score`, `score` on Columns, colored by `club_tier`.
+   - *KPI tiles*: one text sheet each for `score` (with `score_rank`), `np_goals` / `np_xg`, and `assists` / `xa`.
+   - *Percentile profile*: the six `p_*` fields as bars (Measure Names on Rows), with a reference line at 50.
+   - *Shot map*: `Pitch y` on Columns and `Pitch x (vertical)` on Rows (axis 60 to 120), circles sized by `Shot size` and colored by `is_goal`. Add a half-pitch image as the background (*Map → Background Images*, x 0 to 80, y 60 to 120).
+5. **Dashboard:** 1200 × 800, tiles across the top and the three charts below, matching the prototype. Make the shortlist a **filter action** that drives the tiles, the profile and the shot map, and add the *Club tier* parameter control.
+6. **Publish** to Tableau Public. Credit StatsBomb in the dashboard footer, then put the link and a screenshot at the top of this section and on the portfolio front page.
 
 ## Data model
 
@@ -61,6 +93,8 @@ VIEW wide_forward_scores = each metric as a percentile in the pool, and their av
 pip install -r ../requirements.txt
 python build_db.py      # downloads ~1.1 GB of JSON on first run (cached in data/), builds output/scouting.db
 python run_analysis.py  # writes the CSVs, results.json and both charts to output/
+python export_extracts.py  # -> tableau/players.csv, tableau/shots.csv
+python prototype.py        # -> output/prototype.png
 ```
 
 ## Limitations
