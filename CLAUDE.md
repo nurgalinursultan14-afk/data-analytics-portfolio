@@ -43,7 +43,7 @@ Large generated files are git-ignored: `*.db`, `*.duckdb`, the downloaded Citi B
 **Incomplete**
 - GitHub Pages: not verified (task 1). Until it is on, the site and live-dashboard links in the README don't work. Every relative link in `README.md` and `docs/` points to a file on `main`.
 - Project 07: the Tableau Public version is not published. A TODO in its README asks for the link and a screenshot.
-- Contact TODOs (task 2): `README.md` has placeholders for the LinkedIn URL, email and resume link, and `docs/index.html` has placeholder LinkedIn (`YOUR-HANDLE`) and resume (`YOUR-RESUME-LINK`) links.
+- Contact TODOs (task 2): `README.md` has placeholders for the LinkedIn URL, email and resume link. In `docs/index.html` the LinkedIn (`YOUR-HANDLE`) and Resume (`YOUR-RESUME-LINK`) buttons are commented out so the live site has no broken links; fill them and un-comment.
 - No sports or football project yet, which is the biggest gap for sports analytics roles.
 - No Excel deliverable, so Excel on the resume has nothing to back it.
 - Resume v14 lists only 3 projects. Tableau, dbt and forecasting are now on `main` but not on the resume.
@@ -55,7 +55,7 @@ Large generated files are git-ignored: `*.db`, `*.duckdb`, the downloaded Citi B
 ## 4. Ordered Next Tasks
 
 1. **Turn on GitHub Pages.** Nurs goes to Settings → Pages, sets Source to "Deploy from a branch" with `main` and `/docs`. Then check that the site and `olist-dashboard.html` load at https://nurgalinursultan14-afk.github.io/data-analytics-portfolio/.
-2. **Fill the contact TODOs.** Nurs supplies the real LinkedIn URL, contact email and resume link; never invent them. Replace the three `<!-- TODO -->` placeholders on the Contact line of `README.md`, and the `YOUR-HANDLE` LinkedIn and `YOUR-RESUME-LINK` placeholders in `docs/index.html`.
+2. **Fill the contact TODOs.** Nurs supplies the real LinkedIn URL, contact email and resume link; never invent them. Replace the three `<!-- TODO -->` placeholders on the Contact line of `README.md`, and the `YOUR-HANDLE` LinkedIn and `YOUR-RESUME-LINK` placeholders in `docs/index.html` (then un-comment those two buttons).
 3. **Publish project 07 to Tableau Public.** Nurs builds and publishes it by following `07-olist-tableau-dashboard/README.md`, steps 1–6. Then add the Tableau Public link and a screenshot to the project 07 README and the front page.
 4. **Project 10: football scouting in SQL.** Use StatsBomb Open Data (free, with license terms). Load it into SQLite or DuckDB, clean it in SQL, compute per-90 metrics with a minutes threshold, and produce a ranked shortlist for one position. Follow the repo pattern: `build_db.py`, `sql/`, `run_analysis.py`, `output/` and a README with findings and limitations. Add it to the front-page table.
 5. **Project 10 dashboard.** Export Tableau extracts for the scouting shortlist the same way project 07 does. Nurs publishes them to Tableau Public, and the link goes into the README.
