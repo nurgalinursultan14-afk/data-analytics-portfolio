@@ -8,7 +8,7 @@ A public portfolio of end-to-end data analytics projects on real open data, owne
 
 - **Language:** Python 3.12 (the version CI uses), with no package manager beyond pip. Dependencies are in `requirements.txt`: pandas, numpy, matplotlib, scipy, statsmodels, scikit-learn, geopandas, libpysal, esda, spreg, mapclassify, requests, beautifulsoup4, lxml, pytest and dbt-duckdb.
 - **Databases:** SQLite, built locally by each project's `build_db.py`. DuckDB powers the dbt project (08), which can also run on BigQuery through a second profile target.
-- **BI:** Tableau Public (project 07, built from a guide but not yet published). A static HTML/JS dashboard and portfolio site live in `docs/` and are meant to be served by GitHub Pages from `main` `/docs`.
+- **BI:** Tableau Public (project 07, built from a guide but not yet published). A static HTML/JS dashboard and portfolio site live in `docs/` and are served by GitHub Pages from `main` `/docs` (live since 2026-11-24).
 - **Tests and CI:** pytest (project 04 only). `.github/workflows/ci.yml` runs on every push to `main` and every PR: the project 04 tests, `dbt build` with 46 data tests, and the project 09 backtest.
 - **Layout:** one numbered folder per project, each self-contained:
   - `README.md` (question, findings, methods, "Run it", limitations)
@@ -27,7 +27,7 @@ A public portfolio of end-to-end data analytics projects on real open data, owne
 | 08 | `08-olist-dbt/` | `dbt build --profiles-dir .` | yes |
 | 09 | `09-olist-demand-forecast/` | `forecast.py` | yes |
 | 10 | `10-football-scouting-sql/` | `build_db.py` (~1.1 GB StatsBomb JSON, cached in `data/`), `run_analysis.py`, `export_extracts.py`, `prototype.py`, `build_excel.py` | yes |
-| — | `docs/` | `index.html`, `olist-dashboard.html`, `agent-city.html` + `agent-city.json` (3D project city, Three.js 0.160.0 from jsDelivr; falls back to a list without WebGL) (GitHub Pages) | yes (agent-city: PR pending) |
+| — | `docs/` | `index.html`, `olist-dashboard.html`, `agent-city.html` + `agent-city.json` (3D project city, Three.js 0.160.0 from jsDelivr; falls back to a list without WebGL) (GitHub Pages) | yes |
 
 Large generated files are git-ignored: `*.db`, `*.duckdb`, the downloaded Citi Bike zip, Olist CSVs and StatsBomb JSON (`10-football-scouting-sql/data/`), and dbt's `target/` and `logs/`.
 
@@ -40,12 +40,15 @@ Large generated files are git-ignored: `*.db`, `*.duckdb`, the downloaded Citi B
 - Project 08 rebuilds project 06 in dbt with 46 data tests. Project 09 backtests 5 forecasting methods.
 - CI passed on `main` after the merge (run #4): project 04 tests, `dbt build` and the project 09 backtest.
 - The front-page `README.md` has the bio, headline results, CI badge and links to the site and live dashboard.
+- The 3D project city page (`docs/agent-city.html` + `agent-city.json`) is on `main` (PR #8).
+- GitHub Pages is on (Settings → Pages: `main` + `/docs`). The first deploy succeeded on 2026-11-24 at 23:12 UTC, so the site, `olist-dashboard.html` and `agent-city.html` are live at https://nurgalinursultan14-afk.github.io/data-analytics-portfolio/. Nurs checks them on a phone and a laptop; Claude's sessions can't open `github.io`.
+- Contact links: LinkedIn and email are in `README.md` and on the `docs/index.html` buttons.
+- Every relative link in `README.md` and `docs/` points to a file on `main`.
 
 **Incomplete**
-- GitHub Pages: not verified (task 1). Until it is on, the site and live-dashboard links in the README don't work. Every relative link in `README.md` and `docs/` points to a file on `main`.
 - Project 07: the Tableau Public version is not published. A TODO in its README asks for the link and a screenshot.
-- Contact TODOs (task 2): `README.md` has placeholders for the LinkedIn URL, email and resume link. In `docs/index.html` the LinkedIn (`YOUR-HANDLE`) and Resume (`YOUR-RESUME-LINK`) buttons are commented out so the live site has no broken links; fill them and un-comment.
-- Project 10 (football scouting, StatsBomb Premier League 2015/16, 46 wide forwards ranked) is on `main` (PR #6). Its Tableau extracts (`tableau/players.csv`, `tableau/shots.csv`), a Python prototype and a build guide are ready; the Tableau Public version is not published (task 4). StatsBomb's terms ask published work to credit StatsBomb and use their logo; the README credits StatsBomb in text, and the logo is not added yet.
+- Resume link (task 1): still missing. The Resume button in `docs/index.html` and the Resume link in `README.md` are commented out until Nurs supplies a public resume link (a current resume without the phone number).
+- Project 10 (football scouting, StatsBomb Premier League 2015/16, 46 wide forwards ranked) is on `main` (PR #6). Its Tableau extracts (`tableau/players.csv`, `tableau/shots.csv`), a Python prototype and a build guide are ready; the Tableau Public version is not published (task 3). StatsBomb's terms ask published work to credit StatsBomb and use their logo; the README credits StatsBomb in text, and the logo is not added yet.
 - Excel: `10-football-scouting-sql/excel/scouting_shortlist.xlsx` (Excel Table, a real PivotTable, XLOOKUP player card), built by `build_excel.py` (needs LibreOffice). XLOOKUP was not evaluated here (LibreOffice 24.2 lacks it); Nurs should open it once in Excel 365 and check the Payet card in `excel/README.md`.
 - Resume v14 lists only 3 projects. Tableau, dbt and forecasting are now on `main` but not on the resume.
 
@@ -55,12 +58,11 @@ Large generated files are git-ignored: `*.db`, `*.duckdb`, the downloaded Citi B
 
 ## 4. Ordered Next Tasks
 
-1. **Turn on GitHub Pages.** Nurs goes to Settings → Pages, sets Source to "Deploy from a branch" with `main` and `/docs`. Then check that the site and `olist-dashboard.html` load at https://nurgalinursultan14-afk.github.io/data-analytics-portfolio/.
-2. **Fill the contact TODOs.** Nurs supplies the real LinkedIn URL, contact email and resume link; never invent them. Replace the three `<!-- TODO -->` placeholders on the Contact line of `README.md`, and the `YOUR-HANDLE` LinkedIn and `YOUR-RESUME-LINK` placeholders in `docs/index.html` (then un-comment those two buttons).
-3. **Publish project 07 to Tableau Public.** Nurs builds and publishes it by following `07-olist-tableau-dashboard/README.md`, steps 1–6. Then add the Tableau Public link and a screenshot to the project 07 README and the front page.
-4. **Publish the project 10 dashboard.** The extracts and guide are ready (`10-football-scouting-sql/README.md`, "Build it in Tableau Public"). Nurs builds and publishes it, then the link and a screenshot go into the project 10 README and the front page.
-5. **Check the Excel file in Excel 365.** Open `10-football-scouting-sql/excel/scouting_shortlist.xlsx`, confirm the Lookup card matches the values in `excel/README.md` and the PivotTable refreshes, then add Excel to the resume with this file as proof.
-6. **Housekeeping.** With Nurs's approval, delete the merged remote branches `sql-citibike-project`, `sql-olist-project` and `claude/project-thread-93rkn8`, and extend CI to cover any new tests.
+1. **Add the resume link.** Nurs supplies a public link to the current resume (or the PDF itself, with the phone number removed, to commit as `docs/resume.pdf`); never invent one. Then un-comment the Resume button in `docs/index.html` and add the Resume link on the Contact line of `README.md`.
+2. **Publish project 07 to Tableau Public.** Nurs builds and publishes it by following `07-olist-tableau-dashboard/README.md`, steps 1–6. Then add the Tableau Public link and a screenshot to the project 07 README and the front page.
+3. **Publish the project 10 dashboard.** The extracts and guide are ready (`10-football-scouting-sql/README.md`, "Build it in Tableau Public"). Nurs builds and publishes it, then the link and a screenshot go into the project 10 README and the front page.
+4. **Check the Excel file in Excel 365.** Open `10-football-scouting-sql/excel/scouting_shortlist.xlsx`, confirm the Lookup card matches the values in `excel/README.md` and the PivotTable refreshes, then add Excel to the resume with this file as proof.
+5. **Housekeeping.** With Nurs's approval, delete the merged remote branches `sql-citibike-project`, `sql-olist-project` and `claude/project-thread-93rkn8`, and extend CI to cover any new tests.
 
 ## 5. Operational Rules & Guardrails
 
