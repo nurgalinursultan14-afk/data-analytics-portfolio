@@ -6,7 +6,7 @@ I turn messy public data into clear answers for the people who make decisions: S
 
 🌐 **Portfolio site:** [nurgalinursultan14-afk.github.io/data-analytics-portfolio](https://nurgalinursultan14-afk.github.io/data-analytics-portfolio/) · 📊 **[Live dashboard](https://nurgalinursultan14-afk.github.io/data-analytics-portfolio/olist-dashboard.html)**
 
-**Contact:** [GitHub](https://github.com/nurgalinursultan14-afk) · <!-- TODO: add LinkedIn URL --> LinkedIn · <!-- TODO: add email --> Email · <!-- TODO: add resume link --> Resume
+**Contact:** [GitHub](https://github.com/nurgalinursultan14-afk) · [LinkedIn](https://www.linkedin.com/in/nursultan-nurgali-812626314/) · [Email](mailto:nurgalinursultan14@gmail.com) <!-- TODO: add · [Resume](link) once Nurs supplies it -->
 
 **Toolkit:** SQL (CTEs, window functions, star schemas, cohort and RFM analysis) · Python (pandas, statsmodels, scikit-learn, GeoPandas) · statistics (hypothesis tests, regression, power analysis, spatial autocorrelation) · Tableau · dbt · forecasting · sports analytics (xG, per-90 scouting) · web scraping · pytest · git
 
