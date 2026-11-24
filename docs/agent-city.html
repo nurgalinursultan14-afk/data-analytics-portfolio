@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent City · Nursultan Nurgali</title>
+<meta name="description" content="My ten data projects as a 3D night city. Tap a building to fly in and read what it found.">
+<style>
+:root { --bg:#0b0f17; --panel:#121826; --ink:#e9ecf2; --muted:#9aa3b5; --line:#263043; --accent:#f2c14e; --blue:#6c9cf0; }
+* { box-sizing: border-box; }
+html, body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+a { color: var(--blue); }
+header { display:flex; flex-wrap:wrap; gap:8px 16px; align-items:baseline; justify-content:space-between; padding:16px; max-width:1200px; margin:0 auto; }
+header h1 { margin:0; font-size:clamp(20px,4vw,28px); letter-spacing:-0.01em; }
+header p { margin:0; color:var(--muted); font-size:14px; }
+.wrap { max-width:1200px; margin:0 auto; padding:0 16px 32px; display:flex; flex-wrap:wrap; gap:16px; }
+#stage { position:relative; flex:999 1 560px; min-width:0; height:min(72vh,640px); border:1px solid var(--line); border-radius:14px; overflow:hidden; background:radial-gradient(ellipse at 50% 30%, #18223a 0%, #0b0f17 70%); }
+#stage canvas { display:block; width:100%; height:100%; touch-action:none; }
+.label { font-size:12px; font-weight:600; color:#fff; background:rgba(14,20,33,.85); border:1px solid rgba(242,193,78,.7); padding:3px 8px; border-radius:6px; white-space:nowrap; cursor:pointer; pointer-events:auto; }
+.label:hover, .label.on { background:var(--accent); color:#111; }
+@media (max-width:600px) { .label .nm { display:none; } .label.on .nm { display:inline; } }
+#hint { position:absolute; left:12px; bottom:10px; font-size:12px; color:var(--muted); pointer-events:none; }
+#reset { position:absolute; right:10px; top:10px; min-height:40px; padding:0 14px; border-radius:8px; border:1px solid var(--line); background:var(--panel); color:var(--ink); font:inherit; font-size:13px; cursor:pointer; }
+aside { flex:1 1 300px; min-width:0; display:flex; flex-direction:column; gap:12px; }
+.card { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px; }
+.card h2 { margin:0 0 4px; font-size:18px; }
+.num { font-size:12px; color:var(--accent); font-weight:700; letter-spacing:.05em; }
+.card p { margin:8px 0; color:var(--ink); }
+.tools { font-size:13px; color:var(--muted); }
+.agents { display:flex; gap:6px; margin-top:8px; }
+.agent { width:22px; height:22px; border-radius:50%; background:#f2e6b8; border:2px solid var(--accent); }
+ol { margin:0; padding-left:20px; }
+ol li { margin:4px 0; }
+ol button { font:inherit; color:var(--blue); background:none; border:0; padding:4px 0; cursor:pointer; text-align:left; min-height:32px; }
+ol button:focus-visible, #reset:focus-visible, .label:focus-visible { outline:3px solid var(--accent); outline-offset:2px; }
+.nogl #stage { display:none; }
+footer { max-width:1200px; margin:0 auto; padding:0 16px 24px; color:var(--muted); font-size:13px; }
+</style>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<header>
+  <h1>Agent City</h1>
+  <p>My ten data projects as a night city. Tap a building (or a name in the list) to fly in.</p>
+</header>
+<div class="wrap">
+  <div id="stage" aria-label="3D city of projects; the same projects are listed beside it">
+    <button id="reset" type="button">Overview</button>
+    <div id="hint">Drag to orbit · pinch or scroll to zoom</div>
+  </div>
+  <aside>
+    <div class="card" id="detail" aria-live="polite">
+      <span class="num">START HERE</span>
+      <h2>Pick a building</h2>
+      <p>Each tower is one project. Taller towers are the newer ones. The little figures are the "agents" at work: the scripts that rebuild every number from raw data.</p>
+    </div>
+    <div class="card">
+      <h2 style="font-size:15px">All projects</h2>
+      <ol id="list"></ol>
+    </div>
+  </aside>
+</div>
+<footer>Every number comes from the project's own README and scripts. <a href="index.html">Back to the portfolio</a> · <a href="https://github.com/nurgalinursultan14-afk/data-analytics-portfolio">Code on GitHub</a></footer>
+
+<script type="module">
+const REPO = "https://github.com/nurgalinursultan14-afk/data-analytics-portfolio/tree/main/";
+const res = await fetch("agent-city.json");
+const data = await res.json();
+const projects = data.projects;
+
+// The list and detail card work with or without WebGL.
+const list = document.getElementById("list");
+const detail = document.getElementById("detail");
+let selectFn = () => {};
+function showDetail(p) {
+  detail.innerHTML = "";
+  const num = document.createElement("span"); num.className = "num"; num.textContent = `PROJECT ${p.id} · ${p.district.toUpperCase()}`;
+  const h = document.createElement("h2"); h.textContent = p.name;
+  const t = document.createElement("p"); t.textContent = p.headline;
+  const tools = document.createElement("p"); tools.className = "tools"; tools.textContent = p.tools;
+  const agents = document.createElement("div"); agents.className = "agents"; agents.setAttribute("aria-hidden", "true");
+  for (let i = 0; i < 3; i++) { const a = document.createElement("span"); a.className = "agent"; agents.appendChild(a); }
+  const link = document.createElement("a"); link.href = REPO + p.path; link.textContent = "Open the code and full findings →";
+  detail.append(num, h, t, tools, agents, link);
+}
+projects.forEach((p, i) => {
+  const li = document.createElement("li");
+  const b = document.createElement("button"); b.type = "button"; b.textContent = `${p.id} · ${p.name}`;
+  b.addEventListener("click", () => { showDetail(p); selectFn(i); });
+  li.appendChild(b); list.appendChild(li);
+});
+
+// 3D city. Anything below can fail on old devices; the list above still works.
+try {
+  const THREE = await import("three");
+  const { OrbitControls } = await import("three/addons/controls/OrbitControls.js");
+  const { CSS2DRenderer, CSS2DObject } = await import("three/addons/renderers/CSS2DRenderer.js");
+  const stage = document.getElementById("stage");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  stage.prepend(renderer.domElement);
+  const labels = new CSS2DRenderer();
+  labels.domElement.style.position = "absolute"; labels.domElement.style.inset = "0"; labels.domElement.style.pointerEvents = "none";
+  stage.appendChild(labels.domElement);
+
+  const scene = new THREE.Scene();
+  scene.fog = new THREE.Fog(0x0b0f17, 70, 160);
+  const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 400);
+  const HOME = new THREE.Vector3(48, 46, 58);
+  camera.position.copy(HOME);
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true; controls.maxPolarAngle = Math.PI * 0.47; controls.minDistance = 12; controls.maxDistance = 120;
+  controls.autoRotate = !reduce; controls.autoRotateSpeed = 0.4;
+
+  scene.add(new THREE.HemisphereLight(0x8fb4ff, 0x0b0f17, 0.6));
+  const moon = new THREE.DirectionalLight(0xc8d6ff, 0.6); moon.position.set(-30, 60, 20); scene.add(moon);
+
+  const ground = new THREE.Mesh(new THREE.PlaneGeometry(240, 240), new THREE.MeshStandardMaterial({ color: 0x141c2b, roughness: 1 }));
+  ground.rotation.x = -Math.PI / 2; scene.add(ground);
+
+  // Filler city: seeded so it looks the same every visit.
+  let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const filler = new THREE.MeshStandardMaterial({ color: 0x2a3e7a, roughness: 0.8 });
+  for (let i = 0; i < 260; i++) {
+    const x = (rnd() - 0.5) * 150, z = (rnd() - 0.5) * 150;
+    if (Math.hypot(x, z) < 30) continue;
+    const h = 1 + rnd() * 7;
+    const m = new THREE.Mesh(new THREE.BoxGeometry(2 + rnd() * 3, h, 2 + rnd() * 3), filler);
+    m.position.set(x, h / 2, z); scene.add(m);
+  }
+
+  // Centre tower (a nod to the video that inspired this): a gold sphere on a stem.
+  const stem = new THREE.Mesh(new THREE.CylinderGeometry(0.6, 1.6, 16, 12), new THREE.MeshStandardMaterial({ color: 0xc9ced9, metalness: 0.4, roughness: 0.4 }));
+  stem.position.y = 8; scene.add(stem);
+  const orb = new THREE.Mesh(new THREE.SphereGeometry(3, 24, 16), new THREE.MeshStandardMaterial({ color: 0xf2c14e, emissive: 0xb8860b, emissiveIntensity: 0.6, metalness: 0.6, roughness: 0.3 }));
+  orb.position.y = 18; scene.add(orb);
+  const glow = new THREE.PointLight(0xf2c14e, 40, 60); glow.position.set(0, 18, 0); scene.add(glow);
+
+  // One tower per project, in a ring.
+  const towers = [];
+  const beamMat = new THREE.MeshBasicMaterial({ color: 0xf2c14e, transparent: true, opacity: 0.12 });
+  projects.forEach((p, i) => {
+    const a = (i / projects.length) * Math.PI * 2;
+    const r = 20;
+    const h = 8 + i * 1.6;
+    const mat = new THREE.MeshStandardMaterial({ color: 0x3f5fa8, emissive: 0xfff1c4, emissiveIntensity: 0.18, roughness: 0.5 });
+    const t = new THREE.Mesh(new THREE.BoxGeometry(4, h, 4), mat);
+    t.position.set(Math.cos(a) * r, h / 2, Math.sin(a) * r);
+    t.userData = { i, h }; scene.add(t);
+    const beam = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.3, 60, 8, 1, true), beamMat);
+    beam.position.set(t.position.x, h + 30, t.position.z); scene.add(beam);
+    // Three "agents" at the door.
+    const agents = [];
+    for (let k = 0; k < 3; k++) {
+      const ag = new THREE.Mesh(new THREE.SphereGeometry(0.45, 12, 8), new THREE.MeshStandardMaterial({ color: 0xf2e6b8, emissive: 0x6b5a1a, emissiveIntensity: 0.4 }));
+      const off = (k - 1) * 1.2;
+      ag.position.set(t.position.x * 1.18 + Math.sin(a) * off, 0.5, t.position.z * 1.18 - Math.cos(a) * off);
+      scene.add(ag); agents.push(ag);
+    }
+    const el = document.createElement("button");
+    el.type = "button"; el.className = "label"; el.setAttribute("aria-label", `${p.id} ${p.name}`);
+    const idEl = document.createElement("b"); idEl.textContent = p.id;
+    const nm = document.createElement("span"); nm.className = "nm"; nm.textContent = " " + p.name;
+    el.append(idEl, nm);
+    el.addEventListener("click", () => { showDetail(p); select(i); });
+    const lab = new CSS2DObject(el); lab.position.set(0, h / 2 + 2, 0); t.add(lab);
+    towers.push({ t, mat, agents, el });
+  });
+
+  // Fly the camera to a tower, or back to the overview.
+  let fly = null;
+  function flyTo(pos, target) { fly = { from: camera.position.clone(), to: pos, tFrom: controls.target.clone(), tTo: target, k: 0 }; }
+  function select(i) {
+    towers.forEach((w, j) => { w.mat.emissiveIntensity = j === i ? 0.7 : 0.18; w.el.classList.toggle("on", j === i); });
+    const { t, h } = { t: towers[i].t, h: towers[i].t.userData.h };
+    const out = t.position.clone().setY(0).normalize();
+    controls.autoRotate = false;
+    // Stand back and a little above, looking at the tower's middle, so the whole tower and its label fit.
+    flyTo(t.position.clone().add(out.multiplyScalar(18 + h)).setY(h * 0.8 + 4), t.position.clone().setY(h * 0.5));
+  }
+  selectFn = select;
+  document.getElementById("reset").addEventListener("click", () => {
+    towers.forEach(w => { w.mat.emissiveIntensity = 0.18; w.el.classList.remove("on"); });
+    controls.autoRotate = !reduce; flyTo(HOME.clone(), new THREE.Vector3(0, 0, 0));
+  });
+
+  // Tap a tower in the scene.
+  const ray = new THREE.Raycaster(), ptr = new THREE.Vector2();
+  let down = null;
+  renderer.domElement.addEventListener("pointerdown", e => { down = [e.clientX, e.clientY]; });
+  renderer.domElement.addEventListener("pointerup", e => {
+    if (!down || Math.hypot(e.clientX - down[0], e.clientY - down[1]) > 6) return;
+    const r = renderer.domElement.getBoundingClientRect();
+    ptr.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+    ray.setFromCamera(ptr, camera);
+    const hit = ray.intersectObjects(towers.map(w => w.t))[0];
+    if (hit) { const i = hit.object.userData.i; showDetail(projects[i]); select(i); }
+  });
+
+  function resize() {
+    const w = stage.clientWidth, h = stage.clientHeight;
+    renderer.setSize(w, h, false); labels.setSize(w, h);
+    camera.aspect = w / h; camera.updateProjectionMatrix();
+  }
+  new ResizeObserver(resize).observe(stage); resize();
+  // Narrow screens: start further out so the whole ring fits.
+  if (camera.aspect < 1) { HOME.multiplyScalar(1.5); camera.position.copy(HOME); }
+
+  const clock = new THREE.Clock();
+  renderer.setAnimationLoop(() => {
+    const t = clock.getElapsedTime();
+    if (fly) {
+      fly.k = Math.min(1, fly.k + 0.025);
+      const e = fly.k < 0.5 ? 2 * fly.k * fly.k : 1 - Math.pow(-2 * fly.k + 2, 2) / 2;
+      camera.position.lerpVectors(fly.from, fly.to, e);
+      controls.target.lerpVectors(fly.tFrom, fly.tTo, e);
+      if (fly.k === 1) fly = null;
+    }
+    if (!reduce) towers.forEach((w, i) => w.agents.forEach((ag, k) => { ag.position.y = 0.5 + Math.abs(Math.sin(t * 2 + i + k)) * 0.35; }));
+    controls.update();
+    renderer.render(scene, camera); labels.render(scene, camera);
+  });
+} catch (err) {
+  console.warn("3D view unavailable, showing the list only:", err);
+  document.body.classList.add("nogl");
+}
+</script>
+</body>
+</html>

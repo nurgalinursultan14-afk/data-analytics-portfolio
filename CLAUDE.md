@@ -27,7 +27,7 @@ A public portfolio of end-to-end data analytics projects on real open data, owne
 | 08 | `08-olist-dbt/` | `dbt build --profiles-dir .` | yes |
 | 09 | `09-olist-demand-forecast/` | `forecast.py` | yes |
 | 10 | `10-football-scouting-sql/` | `build_db.py` (~1.1 GB StatsBomb JSON, cached in `data/`), `run_analysis.py`, `export_extracts.py`, `prototype.py`, `build_excel.py` | yes |
-| — | `docs/` | `index.html`, `olist-dashboard.html` (GitHub Pages) | yes |
+| — | `docs/` | `index.html`, `olist-dashboard.html`, `agent-city.html` + `agent-city.json` (3D project city, Three.js 0.160.0 from jsDelivr; falls back to a list without WebGL) (GitHub Pages) | yes (agent-city: PR pending) |
 
 Large generated files are git-ignored: `*.db`, `*.duckdb`, the downloaded Citi Bike zip, Olist CSVs and StatsBomb JSON (`10-football-scouting-sql/data/`), and dbt's `target/` and `logs/`.
 
