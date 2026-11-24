@@ -27,7 +27,7 @@ A public portfolio of end-to-end data analytics projects on real open data, owne
 | 08 | `08-olist-dbt/` | `dbt build --profiles-dir .` | yes |
 | 09 | `09-olist-demand-forecast/` | `forecast.py` | yes |
 | 10 | `10-football-scouting-sql/` | `build_db.py` (~1.1 GB StatsBomb JSON, cached in `data/`), `run_analysis.py`, `export_extracts.py`, `prototype.py`, `build_excel.py` | yes |
-| — | `docs/` | `index.html`, `olist-dashboard.html`, `agent-city.html` + `agent-city.json` (3D project city, Three.js 0.160.0 from jsDelivr; falls back to a list without WebGL) (GitHub Pages) | yes (agent-city: PR pending) |
+| — | `docs/` | `index.html`, `olist-dashboard.html`, `agent-city.html` + `agent-city.json` (3D project city, Three.js 0.160.0 from jsDelivr; falls back to a list without WebGL) (GitHub Pages) | yes |
 
 Large generated files are git-ignored: `*.db`, `*.duckdb`, the downloaded Citi Bike zip, Olist CSVs and StatsBomb JSON (`10-football-scouting-sql/data/`), and dbt's `target/` and `logs/`.
 
@@ -40,6 +40,7 @@ Large generated files are git-ignored: `*.db`, `*.duckdb`, the downloaded Citi B
 - Project 08 rebuilds project 06 in dbt with 46 data tests. Project 09 backtests 5 forecasting methods.
 - CI passed on `main` after the merge (run #4): project 04 tests, `dbt build` and the project 09 backtest.
 - The front-page `README.md` has the bio, headline results, CI badge and links to the site and live dashboard.
+- The 3D project city page (`docs/agent-city.html` + `agent-city.json`) is on `main` (PR #8). It only goes live once GitHub Pages is on (task 1).
 
 **Incomplete**
 - GitHub Pages: not verified (task 1). Until it is on, the site and live-dashboard links in the README don't work. Every relative link in `README.md` and `docs/` points to a file on `main`.
